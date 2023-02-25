@@ -22,6 +22,9 @@ const CHARACTERS = [
   'Carmen',
   'Hwang',
   'Cricket',
+  'Bruce',
+  'Ingrid',
+  'Lil\' Kev',
 ];
 
 /**
@@ -29,18 +32,21 @@ const CHARACTERS = [
  *
  * @param {object} props - Component props.
  * @param {string} props.name - Character name.
+ * @param {boolean} [props.faceOnly] - Show image only.
  * @returns {HTMLElement} Fabricate component.
  */
-const CharacterChip = ({ name }) => fabricate('Row')
+const CharacterChip = ({ name, faceOnly = false }) => fabricate('Row')
   .setStyles({
-    backgroundColor: Theme.Colors.unselected,
+    backgroundColor: faceOnly ? Theme.Colors.paddysGreen : Theme.Colors.unselected,
     borderRadius: '50px',
     padding: '4px 5px',
-    cursor: 'pointer',
+    cursor: faceOnly ? 'initial' : 'pointer',
     margin: '3px',
     transition: '0.3s',
   })
   .onHover((el, state, isHovered) => {
+    if (faceOnly) return;
+
     el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
   })
   .onClick((el, { selectedCharacters }) => {
@@ -64,21 +70,22 @@ const CharacterChip = ({ name }) => fabricate('Row')
         height: '32px',
         borderRadius: '50px',
       }),
-    fabricate('Text').setText(name),
+    faceOnly ? fabricate('div') : fabricate('Text').setText(name),
   ]);
 
 /**
- * TableCellText component.
+ * ResultRowText component.
  *
  * @param {object} props - Component props.
  * @param {boolean} [props.isHeader] - If this text is in the table header.
  * @returns {HTMLElement} Fabricate component.
  */
-const TableCellText = ({ isHeader = false } = {}) => fabricate('Text')
+const ResultRowText = ({ isHeader = false } = {}) => fabricate('Text')
   .setStyles({
     fontFamily: 'Textile',
     color: 'white',
     fontWeight: isHeader ? 'bold' : 'initial',
+    margin: '0px 25px 0px 10px',
   });
 
 /**
@@ -90,12 +97,33 @@ const TableCellText = ({ isHeader = false } = {}) => fabricate('Text')
  */
 const ResultRow = ({ episode }) => fabricate('Row')
   .setStyles({
-
+    border: 'solid 2px white',
+    borderRadius: '5px',
+    margin: '5px',
+    height: '64px',
+    alignItems: 'center',
   })
   .setChildren([
-    TableCellText().setText(`S${episode.season} Ep ${episode.episode}`),
-    TableCellText().setText(episode.title),
+    ResultRowText().setText(`S${episode.season} Ep ${episode.episode}`),
+    ResultRowText().setText(episode.title),
+    ...episode.characters.map((name) => CharacterChip({ name, faceOnly: true })),
   ]);
+
+/**
+ * Subtitle component.
+ *
+ * @returns {HTMLElement} Fabricate component.
+ */
+fabricate.declare(
+  'Subtitle',
+  () => fabricate('Text')
+    .setStyles({
+      color: 'white',
+      fontSize: '1.1rem',
+      fontFamily: 'Textile',
+      marginTop: '25px',
+    }),
+);
 
 /**
  * SiteTitle component.

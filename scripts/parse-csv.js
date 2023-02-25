@@ -25,6 +25,9 @@ const CHARACTERS = [
   'Carmen',
   'Hwang',
   'Cricket',
+  'Bruce',
+  'Ingrid',
+  'Lil\' Kev',
 ];
 
 /**

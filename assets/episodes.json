@@ -135,7 +135,6 @@
       "Charlie",
       "Dee",
       "Frank",
-      "The Lawyer",
       "Barbara"
     ],
     "writers": [
@@ -274,10 +273,275 @@
       "Frank",
       "Charlie's Mom",
       "Barbara",
+      "Luther",
+      "Bruce"
+    ],
+    "writers": [
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "1",
+    "title": "The Gang Finds a Dumpster Baby",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "The Waitress",
+      "Charlie's Mom"
+    ],
+    "writers": [
+      "McElhenney",
+      "Day"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "2",
+    "title": "The Gang Gets Invincible",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Artemis",
+      "McPoyles"
+    ],
+    "writers": [
+      "Day",
+      "Howerton",
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "3",
+    "title": "Dennis and Dee's Mom Is Dead",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "The Lawyer",
+      "Bruce"
+    ],
+    "writers": [
+      "McElhenney",
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "4",
+    "title": "The Gang Gets Held Hostage",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "McPoyles"
+    ],
+    "writers": [
+      "McElhennery"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "5",
+    "title": "The Aluminum Monster vs. Fatty Magoo",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Ingrid"
+    ],
+    "writers": [
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "6",
+    "title": "The Gang Solves the North Korea Situation",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "writers": [
+      "Day",
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "7",
+    "title": "The Gang Sells Out",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "The Waitress"
+    ],
+    "writers": [
+      "Day",
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "8",
+    "title": "Frank Sets Sweet Dee on Fire",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "writers": [
+      "McElhenney",
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "9",
+    "title": "Sweet Dee's Dating a Retarded Person",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Lil' Kev"
+    ],
+    "writers": [
+      "Howerton",
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "10",
+    "title": "Mac Is a Serial Killer",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "The Waitress",
+      "Mac's Mom",
+      "Carmen"
+    ],
+    "writers": [
+      "Day",
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "11",
+    "title": "Dennis Looks Like a Registered Sex Offender",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Mac's Mom",
+      "Charlie's Mom",
       "Luther"
     ],
     "writers": [
       "McElhenney"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "12",
+    "title": "The Gang Gets Whacked (Part 1)",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "writers": [
+      "Howerton",
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "13",
+    "title": "The Gang Gets Whacked (Part 2)",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket"
+    ],
+    "writers": [
+      "Howerton",
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "14",
+    "title": "Bums: Making a Mess All Over the City",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "writers": [
+      "Day",
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "3",
+    "episode": "15",
+    "title": "The Gang Dances Their Asses Off",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "The Waitress",
+      "Cricket"
+    ],
+    "writers": [
+      "Hornsby",
+      "Marder",
+      "Rosell"
     ]
   }
 ]

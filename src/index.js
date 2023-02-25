@@ -30,7 +30,9 @@ const updateResults = (state) => {
 const App = () => fabricate('Column')
   .setChildren([
     fabricate('SiteTitle'),
+    fabricate('Subtitle').setText('With characters:'),
     fabricate('ChipRow'),
+    fabricate('Subtitle').setText('Results:'),
     fabricate('ResultsList'),
   ])
   .onUpdate((el, state, updatedKeys) => {
