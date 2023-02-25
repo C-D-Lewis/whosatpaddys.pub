@@ -16,8 +16,8 @@ const CHARACTERS = [
   'Gail the Snail',
   'The Lawyer',
   'Uncle Jack',
-  'Mac\'s Mom',
-  'Charlie\'s Mom',
+  'Mrs Mac',
+  'Mrs Kelly',
   'Barbara',
   'Luther',
   'The Maniac',
@@ -29,6 +29,8 @@ const CHARACTERS = [
   'Ingrid',
   'Lil\' Kev',
 ];
+
+const allWriters = [];
 
 /**
  * Build season and episode data from CSV format.
@@ -50,6 +52,13 @@ const buildSeasonsData = (rows) => rows.map((row) => {
     .filter((p) => !!p);
   const writerList = writers.split(',');
 
+  // Aggregate writers
+  writerList.forEach((p) => {
+    if (allWriters.includes(p)) return;
+
+    allWriters.push(p);
+  });
+
   return {
     season,
     episode,
@@ -70,6 +79,7 @@ const main = async () => {
   // Make useful
   const seasons = buildSeasonsData(csv);
   console.log(seasons);
+  console.log(allWriters);
 
   // Write to disk
   writeFileSync(`${__dirname}/../assets/episodes.json`, JSON.stringify(seasons, null, 2), 'utf-8');

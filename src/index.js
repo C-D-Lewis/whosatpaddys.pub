@@ -3,8 +3,10 @@
  *
  * @returns {Promise<Array<object>>} Episodes data.
  */
-const fetchEpisodeData = () => fetch('assets/episodes.json')
-  .then((r) => r.json());
+const fetchData = async () => {
+  const episodes = await fetch('assets/episodes.json').then((r) => r.json());
+  fabricate.update({ episodes });
+};
 
 /**
  * Update results because selections changed.
@@ -12,13 +14,16 @@ const fetchEpisodeData = () => fetch('assets/episodes.json')
  * @param {object} state - App state.
  */
 const updateResults = (state) => {
-  const { selectedCharacters, episodes } = state;
-  if (!selectedCharacters.length) {
+  const { selectedCharacters, selectedWriters, episodes } = state;
+  if (!selectedCharacters.length && !selectedWriters.length) {
     fabricate.update({ results: [] });
     return;
   }
 
-  const results = episodes.filter((e) => selectedCharacters.every((c) => e.characters.includes(c)));
+  const results = episodes.filter(
+    (e) => selectedCharacters.every((c) => e.characters.includes(c)
+      && selectedWriters.every((w) => e.writers.includes(w))),
+  );
   fabricate.update({ results });
 };
 
@@ -31,20 +36,22 @@ const App = () => fabricate('Column')
   .setChildren([
     fabricate('SiteTitle'),
     fabricate('Subtitle').setText('With characters:'),
-    fabricate('ChipRow'),
+    fabricate('ChipRow', { type: 'characters' }),
+    fabricate('Subtitle').setText('By writers:'),
+    fabricate('ChipRow', { type: 'writers' }),
     fabricate('Subtitle').setText('Results:'),
     fabricate('ResultsList'),
   ])
-  .onUpdate((el, state, updatedKeys) => {
-    if (updatedKeys.includes('selectedCharacters')) updateResults(state);
-  });
+  .onUpdate((el, state) => {
+    updateResults(state);
+  }, ['selectedCharacters', 'selectedWriters']);
 
 const initialState = {
   episodes: [],
   results: [],
   selectedCharacters: [],
+  selectedWriters: [],
 };
 fabricate.app(App(), initialState);
 
-fetchEpisodeData()
-  .then((episodes) => fabricate.update({ episodes }));
+fetchData();
