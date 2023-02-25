@@ -1,0 +1,12 @@
+html, body {
+  background-color: black;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+@font-face {
+  font-family: 'Textile';
+  src: url('../assets/textile.ttf') format('truetype');
+}

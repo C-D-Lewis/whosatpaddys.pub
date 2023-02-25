@@ -1,0 +1,28 @@
+{
+  "name": "sunny-data",
+  "version": "1.0.0",
+  "description": "Scripts and data for episodes of IASIP",
+  "scripts": {
+    "build": "node scripts/parse-csv.js",
+    "start": "http-server"
+  },
+  "author": "Chris Lewis",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@chris-lewis/eslint-config": "^1.0.3",
+    "neat-csv": "^6.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@chris-lewis/eslint-config"
+    ],
+    "globals": {
+      "fabricate": "readonly",
+      "Theme": "readonly",
+      "Utils": "readonly"
+    }
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
