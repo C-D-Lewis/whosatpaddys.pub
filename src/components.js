@@ -47,43 +47,55 @@ const WRITERS = [
  * @param {boolean} [props.interactive] - If the interactive version.
  * @returns {HTMLElement} Fabricate component.
  */
-const CharacterChip = ({ name, interactive = true }) => fabricate('Row')
-  .setStyles({
-    backgroundColor: interactive ? Theme.Colors.unselected : Theme.Colors.paddysGreen,
-    borderRadius: '50px',
-    padding: '4px 5px',
-    cursor: interactive ? 'pointer' : 'initial',
-    margin: '3px',
-    transition: '0.3s',
-  })
-  .onHover((el, state, isHovered) => {
-    if (!interactive) return;
+const CharacterChip = ({ name, interactive = true }) => {
+  const imgSize = fabricate.isNarrow() ? '24px' : '32px';
 
-    el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
-  })
-  .onClick((el, { selectedCharacters }) => {
-    // Toggle
-    const isSelected = !selectedCharacters.includes(name);
-
-    fabricate.update({
-      selectedCharacters: isSelected
-        ? [...selectedCharacters, name]
-        : selectedCharacters.filter((p) => p !== name),
+  const characterImage = fabricate('Image', { src: `assets/characters/${name}.jpg` })
+    .setStyles({
+      width: imgSize,
+      height: imgSize,
+      borderRadius: '50px',
     });
 
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
-  })
-  .setChildren([
-    fabricate('Image', { src: `assets/characters/${name}.jpg` })
-      .setStyles({
-        width: '32px',
-        height: '32px',
-        borderRadius: '50px',
-      }),
-    interactive ? fabricate('Text').setText(name) : fabricate('div'),
-  ]);
+  return fabricate('Row')
+    .setStyles({
+      backgroundColor: interactive ? Theme.Colors.unselected : Theme.Colors.paddysGreen,
+      borderRadius: '50px',
+      padding: '2px 3px',
+      cursor: interactive ? 'pointer' : 'initial',
+      margin: '2px',
+      transition: '0.3s',
+      alignItems: 'center',
+    })
+    .onHover((el, state, isHovered) => {
+      if (!interactive) return;
+
+      el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
+    })
+    .onClick((el, { selectedCharacters }) => {
+      if (!interactive) return;
+
+      const isSelected = !selectedCharacters.includes(name);
+
+      fabricate.update({
+        selectedCharacters: isSelected
+          ? [...selectedCharacters, name]
+          : selectedCharacters.filter((p) => p !== name),
+      });
+
+      el.setStyles({
+        backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
+      });
+    })
+    .setChildren([
+      characterImage,
+      interactive
+        ? fabricate('Text')
+          .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
+          .setText(name)
+        : fabricate('div'),
+    ]);
+};
 
 /**
  * WriterChip component.
@@ -97,11 +109,12 @@ const WriterChip = ({ name, interactive = true }) => fabricate('Row')
   .setStyles({
     backgroundColor: interactive ? Theme.Colors.unselected : Theme.Colors.paddysGreen,
     borderRadius: '50px',
-    padding: '1px 3px',
+    padding: '2px 3px',
     cursor: interactive ? 'pointer' : 'default',
-    margin: '3px',
+    margin: '2px',
     transition: '0.3s',
     alignItems: 'center',
+    height: '20px',
   })
   .onHover((el, state, isHovered) => {
     if (!interactive) return;
@@ -109,7 +122,8 @@ const WriterChip = ({ name, interactive = true }) => fabricate('Row')
     el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
   })
   .onClick((el, { selectedWriters }) => {
-    // Toggle
+    if (!interactive) return;
+
     const isSelected = !selectedWriters.includes(name);
 
     fabricate.update({
@@ -124,11 +138,10 @@ const WriterChip = ({ name, interactive = true }) => fabricate('Row')
   })
   .setChildren([
     fabricate('Image', { src: 'assets/pen.png' })
-      .setStyles({
-        width: '24px',
-        height: '24px',
-      }),
-    fabricate('Text').setText(name),
+      .setStyles({ width: '18px', height: '18px' }),
+    fabricate('Text')
+      .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
+      .setText(name),
   ]);
 
 /**
@@ -143,30 +156,46 @@ const ResultRowText = ({ isHeader = false } = {}) => fabricate('Text')
     fontFamily: 'Textile',
     color: 'white',
     fontWeight: isHeader ? 'bold' : 'initial',
-    margin: '0px 20px 0px 10px',
-    minWidth: '100px',
+    margin: '0px 15px 0px 5px',
+    minWidth: '50px',
   });
 
 /**
- * ResultRow component.
+ * ResultItem component.
  *
  * @param {object} props - Component props.
  * @param {object} props.episode - Episode data.
  * @returns {HTMLElement} Fabricate component.
  */
-const ResultRow = ({ episode }) => fabricate('Row')
-  .setStyles({
-    border: 'solid 2px white',
-    borderRadius: '5px',
-    margin: '5px',
-    height: '64px',
-    alignItems: 'center',
-  })
+const ResultItem = ({ episode }) => fabricate('Fader')
   .setChildren([
-    ResultRowText().setText(`S${episode.season} Ep ${episode.episode}`),
-    ResultRowText().setText(episode.title),
-    ...episode.characters.map((name) => CharacterChip({ name, interactive: false })),
-    ...episode.writers.map((name) => WriterChip({ name, interactive: false })),
+    fabricate('Column')
+      .setStyles({
+        border: 'solid 2px white',
+        borderRadius: '5px',
+        margin: '5px 0px',
+        padding: '5px',
+      })
+      .setChildren([
+        fabricate('Row')
+          .setStyles({
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          })
+          .setChildren([
+            ResultRowText().setText(`S${episode.season} Ep ${episode.episode}`),
+            ResultRowText().setText(episode.title),
+          ]),
+        fabricate('Row')
+          .setStyles({
+            flexWrap: 'wrap',
+            alignItems: 'center',
+          })
+          .setChildren([
+            ...episode.characters.map((name) => CharacterChip({ name, interactive: false })),
+            ...episode.writers.map((name) => WriterChip({ name, interactive: false })),
+          ]),
+      ]),
   ]);
 
 /**
@@ -195,7 +224,7 @@ fabricate.declare(
   () => fabricate('Text')
     .setStyles({
       color: 'white',
-      fontSize: '3rem',
+      fontSize: fabricate.isNarrow() ? '2rem' : '3rem',
       margin: 'auto',
       fontFamily: 'Textile',
     })
@@ -228,6 +257,6 @@ fabricate.declare(
   'ResultsList',
   () => fabricate('Column')
     .onUpdate((el, { results }) => {
-      el.setChildren(results.map((episode) => ResultRow({ episode })));
+      el.setChildren(results.map((episode) => ResultItem({ episode })));
     }, ['results']),
 );

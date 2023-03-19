@@ -33,13 +33,20 @@ const updateResults = (state) => {
  * @returns {HTMLElement} Fabricate component.
  */
 const App = () => fabricate('Column')
+  .setStyles({
+    maxWidth: '1000px',
+    margin: fabricate.isNarrow() ? '10px' : '10px auto',
+  })
   .setChildren([
     fabricate('SiteTitle'),
     fabricate('Subtitle').setText('With characters:'),
     fabricate('ChipRow', { type: 'characters' }),
     fabricate('Subtitle').setText('By writers:'),
     fabricate('ChipRow', { type: 'writers' }),
-    fabricate('Subtitle').setText('Results:'),
+    fabricate('Subtitle')
+      .setStyles({ textAlign: 'center' })
+      .onUpdate((el, { results }) => el.setText(`Found ${results.length} results:`))
+      .when((state) => state.results && state.results.length),
     fabricate('ResultsList'),
   ])
   .onUpdate((el, state) => {
