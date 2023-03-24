@@ -1,4 +1,5 @@
 /** List of recurring characters (sync with script) */
+// TODO: Build from asset
 const CHARACTERS = [
   'Dennis',
   'Mac',
@@ -25,9 +26,12 @@ const CHARACTERS = [
   'Bruce',
   'Ingrid',
   'Lil\' Kev',
+  'Ben the Soldier',
+  'Rex',
 ];
 
 /** List of writers */
+// TODO: Build from asset
 const WRITERS = [
   'Day',
   'McElhenney',

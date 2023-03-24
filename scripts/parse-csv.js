@@ -28,6 +28,8 @@ const CHARACTERS = [
   'Bruce',
   'Ingrid',
   'Lil\' Kev',
+  'Ben the Soldier',
+  'Rex',
 ];
 
 const allWriters = [];
