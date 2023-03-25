@@ -1,57 +1,23 @@
-/** List of recurring characters (sync with script) */
-// TODO: Build from asset
-const CHARACTERS = [
-  'Dennis',
-  'Mac',
-  'Charlie',
-  'Dee',
-  'Frank',
-  'The Waitress',
-  'Artemis',
-  'McPoyles',
-  'Bill',
-  'Maureen',
-  'Gail the Snail',
-  'The Lawyer',
-  'Uncle Jack',
-  'Mrs Mac',
-  'Mrs Kelly',
-  'Barbara',
-  'Luther',
-  'The Maniac',
-  'Z',
-  'Carmen',
-  'Hwang',
-  'Cricket',
-  'Bruce',
-  'Ingrid',
-  'Lil\' Kev',
-  'Ben the Soldier',
-  'Rex',
-];
+import { Theme } from './theme';
+import { Episode, Fabricate, FabricateComponent } from './types';
 
-/** List of writers */
-// TODO: Build from asset
-const WRITERS = [
-  'Day',
-  'McElhenney',
-  'Howerton',
-  'Romano',
-  'Falconer',
-  'Hornsby',
-  'Marder',
-  'Rosell',
-];
+declare const fabricate: Fabricate;
 
 /**
  * CharacterChip component.
  *
  * @param {object} props - Component props.
  * @param {string} props.name - Character name.
- * @param {boolean} [props.interactive] - If the interactive version.
- * @returns {HTMLElement} Fabricate component.
+ * @param {boolean} [props.isControl] - If the isControl version.
+ * @returns {FabricateComponent} Fabricate component.
  */
-const CharacterChip = ({ name, interactive = true }) => {
+export const CharacterChip = ({
+  name,
+  isControl = true
+}: {
+  name: string;
+  isControl?: boolean;
+}) => {
   const imgSize = fabricate.isNarrow() ? '24px' : '32px';
 
   const characterImage = fabricate('Image', { src: `assets/characters/${name}.jpg` })
@@ -63,28 +29,28 @@ const CharacterChip = ({ name, interactive = true }) => {
 
   return fabricate('Row')
     .setStyles({
-      backgroundColor: interactive ? Theme.Colors.unselected : Theme.Colors.paddysGreen,
+      backgroundColor: isControl ? Theme.Colors.unselected : Theme.Colors.sunnyYellow,
       borderRadius: '50px',
       padding: '2px 3px',
-      cursor: interactive ? 'pointer' : 'initial',
+      cursor: isControl ? 'pointer' : 'initial',
       margin: '2px',
       transition: '0.3s',
       alignItems: 'center',
     })
     .onHover((el, state, isHovered) => {
-      if (!interactive) return;
+      if (!isControl) return;
 
       el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
     })
     .onClick((el, { selectedCharacters }) => {
-      if (!interactive) return;
+      if (!isControl) return;
 
       const isSelected = !selectedCharacters.includes(name);
 
       fabricate.update({
         selectedCharacters: isSelected
           ? [...selectedCharacters, name]
-          : selectedCharacters.filter((p) => p !== name),
+          : selectedCharacters.filter((p: string) => p !== name),
       });
 
       el.setStyles({
@@ -93,7 +59,7 @@ const CharacterChip = ({ name, interactive = true }) => {
     })
     .setChildren([
       characterImage,
-      interactive
+      isControl
         ? fabricate('Text')
           .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
           .setText(name)
@@ -106,34 +72,40 @@ const CharacterChip = ({ name, interactive = true }) => {
  *
  * @param {object} props - Component props.
  * @param {string} props.name - Character name.
- * @param {boolean} [props.interactive] - If the interactive version.
- * @returns {HTMLElement} Fabricate component.
+ * @param {boolean} [props.isControl] - If the isControl version.
+ * @returns {FabricateComponent} Fabricate component.
  */
-const WriterChip = ({ name, interactive = true }) => fabricate('Row')
+const WriterChip = ({
+  name,
+  isControl = true,
+}: {
+  name: string;
+  isControl?: boolean;
+}) => fabricate('Row')
   .setStyles({
-    backgroundColor: interactive ? Theme.Colors.unselected : Theme.Colors.paddysGreen,
+    backgroundColor: isControl ? Theme.Colors.unselected : Theme.Colors.paddysGreen,
     borderRadius: '50px',
     padding: '2px 3px',
-    cursor: interactive ? 'pointer' : 'default',
+    cursor: isControl ? 'pointer' : 'default',
     margin: '2px',
     transition: '0.3s',
     alignItems: 'center',
     height: '20px',
   })
   .onHover((el, state, isHovered) => {
-    if (!interactive) return;
+    if (!isControl) return;
 
     el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
   })
   .onClick((el, { selectedWriters }) => {
-    if (!interactive) return;
+    if (!isControl) return;
 
     const isSelected = !selectedWriters.includes(name);
 
     fabricate.update({
       selectedWriters: isSelected
         ? [...selectedWriters, name]
-        : selectedWriters.filter((p) => p !== name),
+        : selectedWriters.filter((p: string) => p !== name),
     });
 
     el.setStyles({
@@ -153,9 +125,13 @@ const WriterChip = ({ name, interactive = true }) => fabricate('Row')
  *
  * @param {object} props - Component props.
  * @param {boolean} [props.isHeader] - If this text is in the table header.
- * @returns {HTMLElement} Fabricate component.
+ * @returns {FabricateComponent} Fabricate component.
  */
-const ResultRowText = ({ isHeader = false } = {}) => fabricate('Text')
+const ResultRowText = ({
+  isHeader = false,
+}: {
+  isHeader?: boolean;
+} = {}) => fabricate('Text')
   .setStyles({
     fontFamily: 'Textile',
     color: 'white',
@@ -168,10 +144,14 @@ const ResultRowText = ({ isHeader = false } = {}) => fabricate('Text')
  * ResultItem component.
  *
  * @param {object} props - Component props.
- * @param {object} props.episode - Episode data.
- * @returns {HTMLElement} Fabricate component.
+ * @param {Episode} props.episode - Episode data.
+ * @returns {FabricateComponent} Fabricate component.
  */
-const ResultItem = ({ episode }) => fabricate('Fader')
+const ResultItem = ({
+  episode,
+}: {
+  episode: Episode;
+}) => fabricate('Fader')
   .setChildren([
     fabricate('Column')
       .setStyles({
@@ -196,8 +176,8 @@ const ResultItem = ({ episode }) => fabricate('Fader')
             alignItems: 'center',
           })
           .setChildren([
-            ...episode.characters.map((name) => CharacterChip({ name, interactive: false })),
-            ...episode.writers.map((name) => WriterChip({ name, interactive: false })),
+            ...episode.characters.map((name) => CharacterChip({ name, isControl: false })),
+            ...episode.writers.map((name) => WriterChip({ name, isControl: false })),
           ]),
       ]),
   ]);
@@ -205,62 +185,57 @@ const ResultItem = ({ episode }) => fabricate('Fader')
 /**
  * Subtitle component.
  *
- * @returns {HTMLElement} Fabricate component.
+ * @returns {FabricateComponent} Fabricate component.
  */
-fabricate.declare(
-  'Subtitle',
-  () => fabricate('Text')
-    .setStyles({
-      color: 'white',
-      fontSize: '1.1rem',
-      fontFamily: 'Textile',
-      marginTop: '25px',
-    }),
-);
+export const Subtitle = () => fabricate('Text')
+  .setStyles({
+    color: 'white',
+    fontSize: '1.1rem',
+    fontFamily: 'Textile',
+    marginTop: '25px',
+  });
 
 /**
  * SiteTitle component.
  *
- * @returns {HTMLElement} Fabricate component.
+ * @returns {FabricateComponent} Fabricate component.
  */
-fabricate.declare(
-  'SiteTitle',
-  () => fabricate('Text')
-    .setStyles({
-      color: 'white',
-      fontSize: fabricate.isNarrow() ? '2rem' : '3rem',
-      margin: 'auto',
-      fontFamily: 'Textile',
-    })
-    .setText('Who\'s at Paddy\'s?'),
-);
+export const SiteTitle = () => fabricate('Text')
+  .setStyles({
+    color: 'white',
+    fontSize: fabricate.isNarrow() ? '2rem' : '3rem',
+    margin: 'auto',
+    fontFamily: 'Textile',
+  })
+  .setText('Who\'s at Paddy\'s?');
 
 /**
  * ChipRow component.
  *
- * @returns {HTMLElement} Fabricate component.
+ * @param {object} props - Component props.
+ * @param {string} props.type - Chip type.
+ * @returns {FabricateComponent} Fabricate component.
  */
-fabricate.declare(
-  'ChipRow',
-  ({ type }) => {
-    const children = type === 'characters'
-      ? CHARACTERS.map((name) => CharacterChip({ name }))
-      : WRITERS.map((name) => WriterChip({ name }));
-    return fabricate('Row')
-      .setStyles({ flexWrap: 'wrap' })
-      .setChildren(children);
-  },
-);
+export const ChipRow = ({
+  type
+}: {
+  type: 'characters' | 'writers';
+}) => fabricate('Row')
+    .setStyles({ flexWrap: 'wrap' })
+    .onUpdate((el, { allCharacters, allWriters }) => {
+      const children = type === 'characters'
+        ? allCharacters.map((name: string) => CharacterChip({ name }))
+        : allWriters.map((name: string) => WriterChip({ name }));
+
+      el.setChildren(children);
+    }, ['allCharacters', 'allWriters']);
 
 /**
  * ResultsList component.
  *
- * @returns {HTMLElement} Fabricate component.
+ * @returns {FabricateComponent} Fabricate component.
  */
-fabricate.declare(
-  'ResultsList',
-  () => fabricate('Column')
-    .onUpdate((el, { results }) => {
-      el.setChildren(results.map((episode) => ResultItem({ episode })));
-    }, ['results']),
-);
+export const ResultsList = () => fabricate('Column')
+  .onUpdate((el, { results }) => {
+    el.setChildren(results.map((episode: Episode) => ResultItem({ episode })));
+  }, ['results']);

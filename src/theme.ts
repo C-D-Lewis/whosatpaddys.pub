@@ -4,7 +4,7 @@ const Colors = {
   paddysGreen: '#015919',
 };
 
-// eslint-disable-next-line no-unused-vars
-const Theme = {
+/** App theme */
+export const Theme = {
   Colors,
 };
