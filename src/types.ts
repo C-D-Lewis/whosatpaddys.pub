@@ -5,6 +5,7 @@ export type Episode = {
   title: string;
   characters: string[];
   writers: string[];
+  tags: string[];
 }
 
 /** State of the fabricate.js app */

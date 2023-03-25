@@ -40,8 +40,7 @@ const updateResults = (state: AppState) => {
    * @param {Episode} e - Episode.
    * @returns {boolean} true if all selected characters appear in this episode.
    */
-  const matchesCharacters = (e: Episode) => !selectedCharacters.length
-    || selectedCharacters.every((c) => e.characters.includes(c));
+  const matchesCharacters = (e: Episode) => selectedCharacters.length && selectedCharacters.every((c) => e.characters.includes(c));
 
   /**
    * Determine if episode matches selected writers (if selections exist).
@@ -49,10 +48,12 @@ const updateResults = (state: AppState) => {
    * @param {Episode} e - Episode.
    * @returns {boolean} true if all selected writers wrote this episode.
    */
-  const matchesWriters = (e: Episode) => !selectedWriters.length
-    || selectedWriters.every((w) => e.writers.includes(w));
+  const matchesWriters = (e: Episode) => selectedWriters.length && selectedWriters.every((w) => e.writers.includes(w));
 
-  const results = episodes.filter((e) => matchesCharacters(e) || matchesWriters(e));
+  const results = episodes.filter((e) => selectedCharacters.length && selectedWriters.length
+    ? matchesCharacters(e) && matchesWriters(e)
+    : matchesCharacters(e) || matchesWriters(e)
+  );
   fabricate.update({ results });
 };
 

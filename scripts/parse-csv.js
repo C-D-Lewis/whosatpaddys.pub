@@ -32,8 +32,6 @@ const CHARACTERS = [
   'Rex',
 ];
 
-const allWriters = [];
-
 /**
  * Build season and episode data from CSV format.
  *
@@ -47,25 +45,21 @@ const buildSeasonsData = (rows) => rows.map((row) => {
     episode,
     title,
     writers,
+    tags,
   ] = values;
-  const charStart = 4;
+  const charStart = 5;
   const characters = values.slice(charStart, charStart + CHARACTERS.length)
     .map((p, i) => p === 'x' && CHARACTERS[i])
     .filter((p) => !!p);
   const writerList = writers.split(',');
-
-  // Aggregate writers
-  writerList.forEach((p) => {
-    if (allWriters.includes(p)) return;
-
-    allWriters.push(p);
-  });
+  const tagList = tags.split(',');
 
   return {
     season,
     episode,
     title,
     characters,
+    tags: tagList[0].length ? tagList : [],
     writers: writerList[0].length ? writerList : [],
   };
 });
@@ -75,13 +69,12 @@ const buildSeasonsData = (rows) => rows.map((row) => {
  */
 const main = async () => {
   // Read exported CSV
-  const data = readFileSync(`${__dirname}/../data/sunny_data.csv`, 'utf-8');
+  const data = readFileSync(`${__dirname}/../assets/sunny_data.csv`, 'utf-8');
   const csv = await neatCsv(data);
 
   // Make useful
   const seasons = buildSeasonsData(csv);
   console.log(seasons);
-  console.log(allWriters);
 
   // Write to disk
   writeFileSync(`${__dirname}/../assets/episodes.json`, JSON.stringify(seasons, null, 2), 'utf-8');
