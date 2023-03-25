@@ -11,15 +11,17 @@ declare const fabricate: Fabricate;
 const fetchData = async () => {
   const episodes: Episode[] = await fetch('assets/episodes.json').then((r) => r.json());
 
-  // Gather all characters and writers
+  // Gather all characters, writers, tags
   const allCharacters: string[] = [];
   const allWriters: string[] = [];
-  episodes.forEach(({ characters, writers }) => {
-    allCharacters.push(...characters.filter((c) => !allCharacters.includes(c)));
-    allWriters.push(...writers.filter((w) => !allWriters.includes(w)));
+  const allTags: string[] = [];
+  episodes.forEach(({ characters, writers, tags }) => {
+    allCharacters.push(...characters.filter((p) => !allCharacters.includes(p)));
+    allWriters.push(...writers.filter((p) => !allWriters.includes(p)));
+    allTags.push(...tags.filter((p) => !allTags.includes(p)));
   });
 
-  fabricate.update({ episodes, allCharacters, allWriters });
+  fabricate.update({ episodes, allCharacters, allWriters, allTags });
 };
 
 /**
@@ -73,6 +75,8 @@ const App = () => fabricate('Column')
     ChipRow({ type: 'characters' }),
     Subtitle().setText('By writers:'),
     ChipRow({ type: 'writers' }),
+    Subtitle().setText('With tags:'),
+    ChipRow({ type: 'tags' }),
     Subtitle()
       .setStyles({ textAlign: 'center' })
       .onUpdate((el, { results }) => el.setText(`Found ${results.length} results:`))
@@ -87,9 +91,11 @@ const initialState: AppState = {
   episodes: [],
   allCharacters: [],
   allWriters: [],
+  allTags: [],
   results: [],
   selectedCharacters: [],
   selectedWriters: [],
+  selectedTags: [],
 };
 fabricate.app(App(), initialState)
 

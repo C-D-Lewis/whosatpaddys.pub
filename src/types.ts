@@ -10,12 +10,14 @@ export type Episode = {
 
 /** State of the fabricate.js app */
 export type AppState = {
-  episodes: Episode[],
-  allCharacters: string[],
-  allWriters: string[],
-  results: Episode[],
-  selectedCharacters: string[],
-  selectedWriters: string[],
+  episodes: Episode[];
+  allCharacters: string[];
+  allWriters: string[];
+  allTags: string[];
+  results: Episode[];
+  selectedCharacters: string[];
+  selectedWriters: string[];
+  selectedTags: string[];
 }
 
 /********************************** Temporary fabricate.js types **********************************/
@@ -28,7 +30,7 @@ export interface FabricateComponent extends HTMLElement {
   setChildren: (children: FabricateComponent[]) => FabricateComponent;
   setText: (text: string) => FabricateComponent;
 
-  onCreate: (cb: Function) => FabricateComponent;
+  onCreate: (cb: (el: FabricateComponent, state: any) => void) => FabricateComponent;
   onUpdate: (cb: (el: FabricateComponent, state: any, keysChanged: string[]) => void, watchKeys?: string[]) => FabricateComponent;
   onHover: (cb: (el: FabricateComponent, state: any, isHovered: boolean) => void) => FabricateComponent;
   onClick: (cb: (el: FabricateComponent, state: any) => void) => FabricateComponent;

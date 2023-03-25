@@ -29,7 +29,7 @@ export const CharacterChip = ({
 
   return fabricate('Row')
     .setStyles({
-      backgroundColor: isControl ? Theme.Colors.unselected : Theme.Colors.sunnyYellow,
+      backgroundColor: Theme.Colors.unselected,
       borderRadius: '50px',
       padding: '2px 3px',
       cursor: isControl ? 'pointer' : 'initial',
@@ -45,17 +45,21 @@ export const CharacterChip = ({
     .onClick((el, { selectedCharacters }) => {
       if (!isControl) return;
 
-      const isSelected = !selectedCharacters.includes(name);
+      const nowSelected = !selectedCharacters.includes(name);
+      el.setStyles({ backgroundColor: nowSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
 
       fabricate.update({
-        selectedCharacters: isSelected
+        selectedCharacters: nowSelected
           ? [...selectedCharacters, name]
           : selectedCharacters.filter((p: string) => p !== name),
       });
+    })
+    .onCreate((el, { selectedCharacters }) => {
+      // If matching the query, highlight
+      if (isControl) return;
 
-      el.setStyles({
-        backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-      });
+      const isSelected = selectedCharacters.includes(name);
+      el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
     })
     .setChildren([
       characterImage,
@@ -71,7 +75,7 @@ export const CharacterChip = ({
  * WriterChip component.
  *
  * @param {object} props - Component props.
- * @param {string} props.name - Character name.
+ * @param {string} props.name - Writer name.
  * @param {boolean} [props.isControl] - If the isControl version.
  * @returns {FabricateComponent} Fabricate component.
  */
@@ -83,9 +87,9 @@ const WriterChip = ({
   isControl?: boolean;
 }) => fabricate('Row')
   .setStyles({
-    backgroundColor: isControl ? Theme.Colors.unselected : Theme.Colors.paddysGreen,
+    backgroundColor: Theme.Colors.unselected,
     borderRadius: '50px',
-    padding: '2px 3px',
+    padding: '4px 6px',
     cursor: isControl ? 'pointer' : 'default',
     margin: '2px',
     transition: '0.3s',
@@ -101,19 +105,80 @@ const WriterChip = ({
     if (!isControl) return;
 
     const isSelected = !selectedWriters.includes(name);
+    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
 
     fabricate.update({
       selectedWriters: isSelected
         ? [...selectedWriters, name]
         : selectedWriters.filter((p: string) => p !== name),
     });
+  })
+  .onCreate((el, { selectedWriters }) => {
+    // If matching the query, highlight
+    if (isControl) return;
 
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
+    const isSelected = selectedWriters.includes(name);
+    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
   })
   .setChildren([
     fabricate('Image', { src: 'assets/pen.png' })
+      .setStyles({ width: '18px', height: '18px' }),
+    fabricate('Text')
+      .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
+      .setText(name),
+  ]);
+
+/**
+ * TagChip component.
+ *
+ * @param {object} props - Component props.
+ * @param {string} props.name - Tag name.
+ * @param {boolean} [props.isControl] - If the isControl version.
+ * @returns {FabricateComponent} Fabricate component.
+ */
+const TagChip = ({
+  name,
+  isControl = true,
+}: {
+  name: string;
+  isControl?: boolean;
+}) => fabricate('Row')
+  .setStyles({
+    backgroundColor: Theme.Colors.unselected,
+    borderRadius: '50px',
+    padding: '4px 6px',
+    cursor: isControl ? 'pointer' : 'default',
+    margin: '2px',
+    transition: '0.3s',
+    alignItems: 'center',
+    height: '20px',
+  })
+  .onHover((el, state, isHovered) => {
+    if (!isControl) return;
+
+    el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
+  })
+  .onClick((el, { selectedTags }) => {
+    if (!isControl) return;
+
+    const isSelected = !selectedTags.includes(name);
+    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
+
+    fabricate.update({
+      selectedTags: isSelected
+        ? [...selectedTags, name]
+        : selectedTags.filter((p: string) => p !== name),
+    });
+  })
+  .onCreate((el, { selectedWriters }) => {
+    // If matching the query, highlight
+    if (isControl) return;
+
+    const isSelected = selectedWriters.includes(name);
+    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
+  })
+  .setChildren([
+    fabricate('Image', { src: 'assets/tag.png' })
       .setStyles({ width: '18px', height: '18px' }),
     fabricate('Text')
       .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
@@ -162,19 +227,13 @@ const ResultItem = ({
       })
       .setChildren([
         fabricate('Row')
-          .setStyles({
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          })
+          .setStyles({ alignItems: 'center', flexWrap: 'wrap' })
           .setChildren([
             ResultRowText().setText(`S${episode.season} Ep ${episode.episode}`),
             ResultRowText().setText(episode.title),
           ]),
         fabricate('Row')
-          .setStyles({
-            flexWrap: 'wrap',
-            alignItems: 'center',
-          })
+          .setStyles({ flexWrap: 'wrap', alignItems: 'center' })
           .setChildren([
             ...episode.characters.map((name) => CharacterChip({ name, isControl: false })),
             ...episode.writers.map((name) => WriterChip({ name, isControl: false })),
@@ -219,16 +278,22 @@ export const SiteTitle = () => fabricate('Text')
 export const ChipRow = ({
   type
 }: {
-  type: 'characters' | 'writers';
+  type: 'characters' | 'writers' | 'tags';
 }) => fabricate('Row')
     .setStyles({ flexWrap: 'wrap' })
-    .onUpdate((el, { allCharacters, allWriters }) => {
-      const children = type === 'characters'
-        ? allCharacters.map((name: string) => CharacterChip({ name }))
-        : allWriters.map((name: string) => WriterChip({ name }));
+    .onUpdate((el, { allCharacters, allWriters, allTags }) => {
+      if (type === 'characters') {
+        el.setChildren(allCharacters.map((name: string) => CharacterChip({ name })));
+        return;
+      }
 
-      el.setChildren(children);
-    }, ['allCharacters', 'allWriters']);
+      if (type === 'writers') {
+        el.setChildren(allWriters.map((name: string) => WriterChip({ name })));
+        return;
+      }
+      
+      el.setChildren(allTags.map((name: string) => TagChip({ name })));
+    }, ['allCharacters', 'allWriters', 'allTags']);
 
 /**
  * ResultsList component.
