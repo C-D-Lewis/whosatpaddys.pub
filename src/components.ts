@@ -121,7 +121,7 @@ const WriterChip = ({
     el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
   })
   .setChildren([
-    fabricate('Image', { src: 'assets/pen.png' })
+    fabricate('Image', { src: 'assets/icons/pen.png' })
       .setStyles({ width: '18px', height: '18px' }),
     fabricate('Text')
       .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
@@ -178,7 +178,7 @@ const TagChip = ({
     el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
   })
   .setChildren([
-    fabricate('Image', { src: 'assets/tag.png' })
+    fabricate('Image', { src: 'assets/icons/tag.png' })
       .setStyles({ width: '18px', height: '18px' }),
     fabricate('Text')
       .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
