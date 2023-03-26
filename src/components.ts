@@ -237,6 +237,7 @@ const ResultItem = ({
           .setChildren([
             ...episode.characters.map((name) => CharacterChip({ name, isControl: false })),
             ...episode.writers.map((name) => WriterChip({ name, isControl: false })),
+            ...episode.tags.map((name) => TagChip({ name, isControl: false })),
           ]),
       ]),
   ]);
@@ -251,7 +252,7 @@ export const Subtitle = () => fabricate('Text')
     color: 'white',
     fontSize: '1.1rem',
     fontFamily: 'Textile',
-    marginTop: '25px',
+    marginTop: '15px',
   });
 
 /**

@@ -30,32 +30,30 @@ const fetchData = async () => {
  * @param {AppState} state - App state.
  */
 const updateResults = (state: AppState) => {
-  const { selectedCharacters, selectedWriters, episodes } = state;
-  if (!selectedCharacters.length && !selectedWriters.length) {
+  const { episodes, selectedCharacters, selectedWriters, selectedTags } = state;
+
+  // Nothing chosen yet
+  if (!selectedCharacters.length && !selectedWriters.length && !selectedTags.length) {
     fabricate.update({ results: [] });
     return;
   }
 
   /**
-   * Determine if episode matches selected characters (if selections exist).
+   * Generic matcher for selected lists against lists in Episode.
    *
-   * @param {Episode} e - Episode.
-   * @returns {boolean} true if all selected characters appear in this episode.
+   * @param {Episode} e - Episode to match.
+   * @param {string} epKey - Key in episode that contains list to compare against.
+   * @param {string[]} stateList - List of selections from the state.
+   * @returns {boolean} true if this Episode should match.
    */
-  const matchesCharacters = (e: Episode) => selectedCharacters.length && selectedCharacters.every((c) => e.characters.includes(c));
+  const genericMatch = (e: Episode, epKey: string, stateList: string[]) =>
+    !stateList.length || stateList.every(p => e[epKey as keyof Episode].includes(p));
 
-  /**
-   * Determine if episode matches selected writers (if selections exist).
-   *
-   * @param {Episode} e - Episode.
-   * @returns {boolean} true if all selected writers wrote this episode.
-   */
-  const matchesWriters = (e: Episode) => selectedWriters.length && selectedWriters.every((w) => e.writers.includes(w));
+  const matchesCharacters = (e: Episode) => genericMatch(e, 'characters', selectedCharacters);
+  const matchesWriters = (e: Episode) => genericMatch(e, 'writers', selectedWriters);
+  const matchesTags = (e: Episode) => genericMatch(e, 'tags', selectedTags);
 
-  const results = episodes.filter((e) => selectedCharacters.length && selectedWriters.length
-    ? matchesCharacters(e) && matchesWriters(e)
-    : matchesCharacters(e) || matchesWriters(e)
-  );
+  const results = episodes.filter((e) => matchesCharacters(e) && matchesWriters(e) && matchesTags(e));
   fabricate.update({ results });
 };
 
@@ -85,7 +83,7 @@ const App = () => fabricate('Column')
   ])
   .onUpdate((el, state) => {
     updateResults(state);
-  }, ['selectedCharacters', 'selectedWriters']);
+  }, ['selectedCharacters', 'selectedWriters', 'selectedTags']);
 
 const initialState: AppState = {
   episodes: [],
