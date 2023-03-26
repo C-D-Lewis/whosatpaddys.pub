@@ -24,25 +24,58 @@ export type AppState = {
 
 // TODO: Find way to use app-specific state type as onUpdate/when state param
 
-/** Fabricate components extend HTML elements */
-export interface FabricateComponent<T> extends HTMLElement {
-  setStyles: (styles: object) => FabricateComponent<T>;
-  setChildren: (children: FabricateComponent<T>[]) => FabricateComponent<T>;
-  setText: (text: string) => FabricateComponent<T>;
+/**
+ * Fabricate component extends HTMLElement - and uses shape of app's state.
+ */
+export interface FabricateComponent<StateShape> extends HTMLElement {
+  setStyles: (styles: object) => FabricateComponent<StateShape>;
+  setChildren: (children: FabricateComponent<StateShape>[]) => FabricateComponent<StateShape>;
+  setText: (text: string) => FabricateComponent<StateShape>;
 
-  onCreate: (cb: (el: FabricateComponent<T>, state: T) => void) => FabricateComponent<T>;
-  onUpdate: (cb: (el: FabricateComponent<T>, state: T, keysChanged: string[]) => void, watchKeys?: string[]) => FabricateComponent<T>;
-  onHover: (cb: (el: FabricateComponent<T>, state: T, isHovered: boolean) => void) => FabricateComponent<T>;
-  onClick: (cb: (el: FabricateComponent<T>, state: T) => void) => FabricateComponent<T>;
+  onCreate: (
+    cb: (
+      el: FabricateComponent<StateShape>,
+      state: StateShape,
+    ) => void,
+  ) => FabricateComponent<StateShape>;
+  onUpdate: (
+    cb: (
+      el: FabricateComponent<StateShape>,
+      state: StateShape,
+      keysChanged: string[],
+    ) => void,
+    watchKeys?: string[],
+  ) => FabricateComponent<StateShape>;
+  onHover: (
+    cb: (
+      el: FabricateComponent<StateShape>,
+      state: StateShape,
+      isHovered: boolean,
+    ) => void,
+  ) => FabricateComponent<StateShape>;
+  onClick: (
+    cb: (
+      el: FabricateComponent<StateShape>,
+      state: StateShape,
+    ) => void,
+  ) => FabricateComponent<StateShape>;
 
-  when: (cb: (state: T) => boolean) => FabricateComponent<T>;
+  when: (
+    cb: (state: StateShape) => boolean,
+  ) => FabricateComponent<StateShape>;
 }
 
 /** Fabricate.js library */
-export type Fabricate<T> = {
-  (componentName: string, props?: object): FabricateComponent<T>;
+export type Fabricate<StateShape> = {
+  (componentName: string, props?: object): FabricateComponent<StateShape>;
 
-  app: (root: FabricateComponent<T>, initialState: T) => FabricateComponent<T>;
-  update: (param1: string | object, param2?: Function | object | undefined) => void;
+  app: (
+    root: FabricateComponent<StateShape>,
+    initialState: StateShape,
+  ) => FabricateComponent<StateShape>;
+  update: (
+    param1: string | object,
+    param2?: Function | object | undefined,
+  ) => void;
   isNarrow: () => boolean;
 }
