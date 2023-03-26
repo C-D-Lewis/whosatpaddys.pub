@@ -25,24 +25,24 @@ export type AppState = {
 // TODO: Find way to use app-specific state type as onUpdate/when state param
 
 /** Fabricate components extend HTML elements */
-export interface FabricateComponent extends HTMLElement {
-  setStyles: (styles: object) => FabricateComponent;
-  setChildren: (children: FabricateComponent[]) => FabricateComponent;
-  setText: (text: string) => FabricateComponent;
+export interface FabricateComponent<T> extends HTMLElement {
+  setStyles: (styles: object) => FabricateComponent<T>;
+  setChildren: (children: FabricateComponent<T>[]) => FabricateComponent<T>;
+  setText: (text: string) => FabricateComponent<T>;
 
-  onCreate: (cb: (el: FabricateComponent, state: any) => void) => FabricateComponent;
-  onUpdate: (cb: (el: FabricateComponent, state: any, keysChanged: string[]) => void, watchKeys?: string[]) => FabricateComponent;
-  onHover: (cb: (el: FabricateComponent, state: any, isHovered: boolean) => void) => FabricateComponent;
-  onClick: (cb: (el: FabricateComponent, state: any) => void) => FabricateComponent;
+  onCreate: (cb: (el: FabricateComponent<T>, state: T) => void) => FabricateComponent<T>;
+  onUpdate: (cb: (el: FabricateComponent<T>, state: T, keysChanged: string[]) => void, watchKeys?: string[]) => FabricateComponent<T>;
+  onHover: (cb: (el: FabricateComponent<T>, state: T, isHovered: boolean) => void) => FabricateComponent<T>;
+  onClick: (cb: (el: FabricateComponent<T>, state: T) => void) => FabricateComponent<T>;
 
-  when: (cb: (state: any) => boolean) => FabricateComponent;
+  when: (cb: (state: T) => boolean) => FabricateComponent<T>;
 }
 
 /** Fabricate.js library */
-export type Fabricate = {
-  (componentName: string, props?: object): FabricateComponent;
+export type Fabricate<T> = {
+  (componentName: string, props?: object): FabricateComponent<T>;
 
-  app: (root: FabricateComponent, initialState: any) => FabricateComponent;
+  app: (root: FabricateComponent<T>, initialState: T) => FabricateComponent<T>;
   update: (param1: string | object, param2?: Function | object | undefined) => void;
   isNarrow: () => boolean;
 }

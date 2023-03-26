@@ -1,7 +1,7 @@
 import { Theme } from './theme';
-import { Episode, Fabricate, FabricateComponent } from './types';
+import { AppState, Episode, Fabricate, FabricateComponent } from './types';
 
-declare const fabricate: Fabricate;
+declare const fabricate: Fabricate<AppState>;
 
 /**
  * CharacterChip component.
@@ -170,11 +170,11 @@ const TagChip = ({
         : selectedTags.filter((p: string) => p !== name),
     });
   })
-  .onCreate((el, { selectedWriters }) => {
+  .onCreate((el, { selectedTags }) => {
     // If matching the query, highlight
     if (isControl) return;
 
-    const isSelected = selectedWriters.includes(name);
+    const isSelected = selectedTags.includes(name);
     el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
   })
   .setChildren([

@@ -1,7 +1,7 @@
 import { ChipRow, ResultsList, SiteTitle, Subtitle } from './components';
-import { AppState, Episode, Fabricate } from './types';
+import { AppState, Episode, Fabricate, FabricateComponent } from './types';
 
-declare const fabricate: Fabricate;
+declare const fabricate: Fabricate<AppState>;
 
 /**
  * Fetch the episode data file.
@@ -60,7 +60,7 @@ const updateResults = (state: AppState) => {
 /**
  * App component.
  *
- * @returns {HTMLElement} Fabricate component.
+ * @returns {FabricateComponent} Fabricate component.
  */
 const App = () => fabricate('Column')
   .setStyles({
@@ -78,7 +78,7 @@ const App = () => fabricate('Column')
     Subtitle()
       .setStyles({ textAlign: 'center' })
       .onUpdate((el, { results }) => el.setText(`Found ${results.length} results:`))
-      .when((state) => state.results && state.results.length),
+      .when((state: AppState) => state.results && state.results.length > 0),
     ResultsList(),
   ])
   .onUpdate((el, state) => {
@@ -95,6 +95,7 @@ const initialState: AppState = {
   selectedWriters: [],
   selectedTags: [],
 };
-fabricate.app(App(), initialState)
+
+fabricate.app(App(), initialState);
 
 fetchData();
