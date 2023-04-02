@@ -8,7 +8,7 @@
     "setup": "npm run clean && npm run build:episodes",
     "build:dev": "npm run setup && webpack --mode development",
     "build": "npm run setup && webpack --mode production",
-    "start": "http-server"
+    "start": "npm run build:dev && http-server"
   },
   "author": "Chris Lewis",
   "license": "Apache-2.0",
@@ -30,6 +30,7 @@
     ]
   },
   "devDependencies": {
+    "fabricate.js": "^2.4.1",
     "http-server": "^14.1.1",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2",

@@ -1,5 +1,6 @@
 import { ChipRow, ResultsList, SiteTitle, Subtitle } from './components';
-import { AppState, Episode, Fabricate, FabricateComponent } from './types';
+import { AppState, Episode } from './types';
+import { Fabricate } from '../node_modules/fabricate.js/types/fabricate';
 
 declare const fabricate: Fabricate<AppState>;
 
