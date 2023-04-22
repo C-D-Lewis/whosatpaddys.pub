@@ -24,7 +24,6 @@ module "main" {
 
   region          = "us-east-1"
   project_name    = "whosatpaddys.pub"
-  vpc_id          = "vpc-c3b70bb9"
   zone_id         = "Z0366509V094HMD6CEGE"
   domain_name     = "whosatpaddys.pub"
   alt_domain_name = "www.whosatpaddys.pub"
