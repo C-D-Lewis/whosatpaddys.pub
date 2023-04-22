@@ -53,9 +53,9 @@ aws s3 sync src $BUCKET/src
 aws s3 sync assets $BUCKET/assets
 aws s3 sync styles $BUCKET/styles
 
-# Push files (optional)
-aws s3 sync feed $BUCKET/feed || exit 0
-aws s3 cp favicon.ico $BUCKET || exit 0
+# Push files (optional, from other projects)
+aws s3 cp favicon.ico $BUCKET || true
+aws s3 sync feed $BUCKET/feed || true
 
 # Restore template
 mv index.html.bak index.html
