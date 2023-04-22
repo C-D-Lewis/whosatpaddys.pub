@@ -61,7 +61,9 @@
       "Artemis",
       "Carmen"
     ],
-    "tags": [],
+    "tags": [
+      "Scam"
+    ],
     "writers": [
       "McElhenney"
     ]
@@ -455,7 +457,10 @@
       "Dee",
       "Frank"
     ],
-    "tags": [],
+    "tags": [
+      "Scheme",
+      "Camera"
+    ],
     "writers": [
       "McElhenney",
       "Marder",
@@ -1285,7 +1290,9 @@
       "Frank",
       "Z"
     ],
-    "tags": [],
+    "tags": [
+      "Scheme"
+    ],
     "writers": [
       "Marder",
       "Rosell"
@@ -1332,6 +1339,434 @@
       "Hornsby",
       "Mann",
       "Sielaff"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "1",
+    "title": "Frank's Pretty Woman",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "2",
+    "title": "The Gang Goes to the Jersey Shore",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [],
+    "writers": [
+      "Chernin"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "3",
+    "title": "Frank Reynolds' Little Beauties",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Artemis"
+    ],
+    "tags": [],
+    "writers": [
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "4",
+    "title": "Sweet Dee Gets Audited",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scam"
+    ],
+    "writers": [
+      "McElhenney",
+      "Howerton",
+      "Day"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "5",
+    "title": "Frank's Brother",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scam"
+    ],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "6",
+    "title": "The Storm of the Century",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket",
+      "Jackie"
+    ],
+    "tags": [],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "7",
+    "title": "Chardee MacDennis: The Game of Games",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "8",
+    "title": "The ANTI-Social Network",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "9",
+    "title": "The Gang Gets Trapped",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Rakhe"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "10",
+    "title": "How Mac Got Fat",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "Marder",
+      "Sethi"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "11",
+    "title": "Thunder Gun Express",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Chernin"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "12",
+    "title": "The High School Reunion",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Maureen",
+      "Cricket"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "7",
+    "episode": "13",
+    "title": "The High School Reunion, Part 2: The Gang's Revenge",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Maureen",
+      "Ingrid"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "1",
+    "title": "Pop-Pop: The Final Solution",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Lawyer",
+      "Cricket"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "2",
+    "title": "The Gang Recycles Their Trash",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "3",
+    "title": "The Maureen Ponderosa Wedding Massacre",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "McPoyles",
+      "Bill",
+      "Maureen"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "4",
+    "title": "Charlie and Dee Find Love",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "5",
+    "title": "The Gang Gets Analyzed",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Rakhe"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "6",
+    "title": "Charlie's Mom Has Cancer",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Artemis",
+      "Mrs Mac",
+      "Mrs Kelly"
+    ],
+    "tags": [
+      "Scam"
+    ],
+    "writers": [
+      "Marder",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "7",
+    "title": "Frank's Back in Business",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Chernin"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "8",
+    "title": "Charlie Rules the World",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "9",
+    "title": "The Gang Dines Out",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waiter"
+    ],
+    "tags": [],
+    "writers": [
+      "Sethi"
+    ]
+  },
+  {
+    "season": "8",
+    "episode": "10",
+    "title": "Reynolds vs. Reynolds: The Cereal Defense",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
     ]
   }
 ]

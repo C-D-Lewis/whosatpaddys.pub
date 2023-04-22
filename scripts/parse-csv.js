@@ -1,7 +1,7 @@
 const neatCsv = require('neat-csv');
 const { readFileSync, writeFileSync } = require('fs');
 
-/** List of recurring characters (sync with webapp) */
+/** List of recurring characters */
 const CHARACTERS = [
   'Dennis',
   'Mac',
@@ -30,6 +30,8 @@ const CHARACTERS = [
   'Lil\' Kev',
   'Ben',
   'Rex',
+  'Jackie',
+  'Waiter',
 ];
 
 /**
