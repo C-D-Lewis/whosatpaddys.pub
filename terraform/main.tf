@@ -1,14 +1,3 @@
-module "main" {
-  source          = "./infrastructure"
-  region          = var.region
-  project_name    = var.project_name
-  vpc_id          = var.vpc_id
-  zone_id         = var.zone_id
-  domain_name     = var.domain_name
-  alt_domain_name = var.alt_domain_name
-  certificate_arn = var.certificate_arn
-}
-
 provider "aws" {
   region = var.region
 }
@@ -28,4 +17,16 @@ terraform {
     key    = "whosatpaddys"
     region = "us-east-1"
   }
+}
+
+module "main" {
+  source = "github.com/c-d-lewis/terraform-s3-cloudfront-website?ref=master"
+
+  region          = "us-east-1"
+  project_name    = "whosatpaddys.pub"
+  vpc_id          = "vpc-c3b70bb9"
+  zone_id         = "Z0366509V094HMD6CEGE"
+  domain_name     = "whosatpaddys.pub"
+  alt_domain_name = "www.whosatpaddys.pub"
+  certificate_arn = "arn:aws:acm:us-east-1:617929423658:certificate/72e3a39b-e701-4269-b429-af2a6a312db9"
 }
