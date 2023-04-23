@@ -1768,5 +1768,578 @@
       "Howerton",
       "McElhenney"
     ]
+  },
+  {
+    "season": "9",
+    "episode": "1",
+    "title": "The Gang Broke Dee",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "2",
+    "title": "Gun Fever Too: Still Hot",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Uncle Jack"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "3",
+    "title": "The Gang Tries Desperately to Win an Award",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Artemis",
+      "Z"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "4",
+    "title": "Mac and Dennis Buy a Timeshare",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Maniac",
+      "Ben"
+    ],
+    "tags": [
+      "Scam"
+    ],
+    "writers": [
+      "Chernin"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "5",
+    "title": "Mac Day",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "6",
+    "title": "The Gang Saves the Day",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Rex",
+      "Jackie"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "Chernin"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "7",
+    "title": "The Gang Gets Quarantined",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "8",
+    "title": "Flowers for Charlie",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [],
+    "writers": [
+      "Benioff",
+      "Weiss"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "9",
+    "title": "The Gang Makes Lethal Weapon 6",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Artemis"
+    ],
+    "tags": [],
+    "writers": [
+      "Marder"
+    ]
+  },
+  {
+    "season": "9",
+    "episode": "10",
+    "title": "The Gang Squashes Their Beefs",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "McPoyles",
+      "Bill",
+      "Gail",
+      "Hwang",
+      "Cricket"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Rosell"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "1",
+    "title": "The Gang Beats Boggs",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Chernin"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "2",
+    "title": "The Gang Group Dates",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Waiter"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "3",
+    "title": "Psycho Pete Returns",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "4",
+    "title": "Charlie Work",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scam"
+    ],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "5",
+    "title": "The Gang Spies Like U.S.",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waiter"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "6",
+    "title": "The Gang Misses the Boat",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "7",
+    "title": "Mac Kills His Dad",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Bill",
+      "Maureen",
+      "Mrs Mac",
+      "Mrs Kelly",
+      "Luther"
+    ],
+    "tags": [],
+    "writers": [
+      "Chernin",
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "8",
+    "title": "The Gang Goes on Family Fight",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket"
+    ],
+    "tags": [],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "9",
+    "title": "Frank Retires",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scam"
+    ],
+    "writers": [
+      "Day",
+      "Howerton",
+      "McElhenney"
+    ]
+  },
+  {
+    "season": "10",
+    "episode": "10",
+    "title": "Ass Kickers United: Mac and Charlie Join a Cult",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Mrs Mac",
+      "Mrs Kelly",
+      "Rex"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Marder"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "1",
+    "title": "Chardee MacDennis 2: Electric Boogaloo",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [],
+    "writers": [
+      "McElhennery",
+      "Day"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "2",
+    "title": "Frank Falls Out the Window",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [
+      "Flashback",
+      "Scam"
+    ],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "3",
+    "title": "The Gang Hits the Slopes",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Chernin"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "4",
+    "title": "Dee Made a Smut Film",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket"
+    ],
+    "tags": [],
+    "writers": [
+      "Ledgin"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "5",
+    "title": "Mac & Dennis Move to the Suburbs",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Covington"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "6",
+    "title": "Being Frank",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Artemis",
+      "Bill",
+      "Hwang"
+    ],
+    "tags": [],
+    "writers": [
+      "Marder"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "7",
+    "title": "McPoyle vs. Ponderosa: The Trial of the Century",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "McPoyles",
+      "Bill",
+      "Maureen",
+      "Lawyer",
+      "Uncle Jack"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "Galvin"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "8",
+    "title": "Charlie Catches a Leprechaun",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Silberman"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "9",
+    "title": "The Gang Goes to Hell",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "Hornsby",
+      "Marder"
+    ]
+  },
+  {
+    "season": "11",
+    "episode": "10",
+    "title": "The Gang Goes to Hell: Part Two",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "Hornsby",
+      "Marder"
+    ]
   }
 ]
