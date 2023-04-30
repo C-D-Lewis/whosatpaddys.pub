@@ -1,6 +1,6 @@
 const Colors = {
   sunnyYellow: '#ffad2a',
-  unselected: '#666',
+  unselected: '#888',
   paddysGreen: '#015919',
 };
 

@@ -5,23 +5,33 @@ import { Fabricate } from '../node_modules/fabricate.js/types/fabricate';
 declare const fabricate: Fabricate<AppState>;
 
 /**
- * CharacterChip component.
+ * CountableChip component.
  *
  * @param {object} props - Component props.
  * @param {string} props.name - Character name.
+ * @param {number} [props.count] - Appearance count.
  * @param {boolean} [props.isControl] - If the isControl version.
+ * @param {boolean} [props.showText] - If text should be shown.
+ * @param {string} [props.imgSize] - Image size.
+ * @param {string} props.imgSrc - Image src.
  * @returns {FabricateComponent} Fabricate component.
  */
-export const CharacterChip = ({
+const CountableChip = ({
   name,
-  isControl = true
+  count,
+  isControl = true,
+  showText = true,
+  imgSize = '18px',
+  imgSrc,
 }: {
   name: string;
+  count?: number;
   isControl?: boolean;
+  showText?: boolean;
+  imgSize?: string;
+  imgSrc: string;
 }) => {
-  const imgSize = fabricate.isNarrow() ? '24px' : '32px';
-
-  const characterImage = fabricate('Image', { src: `assets/characters/${name}.jpg` })
+  const image = fabricate('Image', { src: imgSrc })
     .setStyles({
       width: imgSize,
       height: imgSize,
@@ -43,6 +53,47 @@ export const CharacterChip = ({
 
       el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
     })
+    .setChildren([
+      image,
+      isControl || showText
+        ? fabricate('span')
+          .setStyles({
+            fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem',
+            padding: '0px 2px',
+          })
+          .setText(count ? `${name} (${count})` : name)
+        : fabricate('div'),
+    ]);
+};
+
+/**
+ * CharacterChip component.
+ *
+ * @param {object} props - Component props.
+ * @param {string} props.name - Character name.
+ * @param {number} [props.count] - Appearance count.
+ * @param {boolean} [props.isControl] - If the isControl version.
+ * @param {boolean} [props.showText] - If text should be shown.
+ * @returns {FabricateComponent} Fabricate component.
+ */
+export const CharacterChip = ({
+  name,
+  count,
+  isControl = true,
+  showText = false,
+}: {
+  name: string;
+  count?: number;
+  isControl?: boolean;
+  showText?: boolean;
+}) => CountableChip({
+    name,
+    count,
+    isControl,
+    showText,
+    imgSize: fabricate.isNarrow() ? '24px' : '32px',
+    imgSrc: `assets/characters/${name}.jpg`,
+  })
     .onClick((el, { selectedCharacters }) => {
       if (!isControl) return;
 
@@ -61,47 +112,31 @@ export const CharacterChip = ({
 
       const isSelected = selectedCharacters.includes(name);
       el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
-    })
-    .setChildren([
-      characterImage,
-      isControl
-        ? fabricate('Text')
-          .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
-          .setText(name)
-        : fabricate('div'),
-    ]);
-};
+    });
 
 /**
  * WriterChip component.
  *
  * @param {object} props - Component props.
  * @param {string} props.name - Writer name.
+ * @param {number} [props.count] - Appearance count.
  * @param {boolean} [props.isControl] - If the isControl version.
  * @returns {FabricateComponent} Fabricate component.
  */
 const WriterChip = ({
   name,
+  count,
   isControl = true,
 }: {
   name: string;
+  count?: number;
   isControl?: boolean;
-}) => fabricate('Row')
-  .setStyles({
-    backgroundColor: Theme.Colors.unselected,
-    borderRadius: '50px',
-    padding: '4px 6px',
-    cursor: isControl ? 'pointer' : 'default',
-    margin: '2px',
-    transition: '0.3s',
-    alignItems: 'center',
-    height: '20px',
-  })
-  .onHover((el, state, isHovered) => {
-    if (!isControl) return;
-
-    el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
-  })
+}) => CountableChip({
+  name,
+  count,
+  isControl,
+  imgSrc: 'assets/icons/pen.png',
+})
   .onClick((el, { selectedWriters }) => {
     if (!isControl) return;
 
@@ -120,45 +155,31 @@ const WriterChip = ({
 
     const isSelected = selectedWriters.includes(name);
     el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
-  })
-  .setChildren([
-    fabricate('Image', { src: 'assets/icons/pen.png' })
-      .setStyles({ width: '18px', height: '18px' }),
-    fabricate('Text')
-      .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
-      .setText(name),
-  ]);
+  });
 
 /**
  * TagChip component.
  *
  * @param {object} props - Component props.
  * @param {string} props.name - Tag name.
+ * @param {number} [props.count] - Appearance count.
  * @param {boolean} [props.isControl] - If the isControl version.
  * @returns {FabricateComponent} Fabricate component.
  */
 const TagChip = ({
   name,
+  count,
   isControl = true,
 }: {
   name: string;
+  count?: number;
   isControl?: boolean;
-}) => fabricate('Row')
-  .setStyles({
-    backgroundColor: Theme.Colors.unselected,
-    borderRadius: '50px',
-    padding: '4px 6px',
-    cursor: isControl ? 'pointer' : 'default',
-    margin: '2px',
-    transition: '0.3s',
-    alignItems: 'center',
-    height: '20px',
-  })
-  .onHover((el, state, isHovered) => {
-    if (!isControl) return;
-
-    el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
-  })
+}) => CountableChip({
+  name,
+  count,
+  isControl,
+  imgSrc: 'assets/icons/tag.png',
+})
   .onClick((el, { selectedTags }) => {
     if (!isControl) return;
 
@@ -177,14 +198,7 @@ const TagChip = ({
 
     const isSelected = selectedTags.includes(name);
     el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
-  })
-  .setChildren([
-    fabricate('Image', { src: 'assets/icons/tag.png' })
-      .setStyles({ width: '18px', height: '18px' }),
-    fabricate('Text')
-      .setStyles({ fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem' })
-      .setText(name),
-  ]);
+  });
 
 /**
  * ResultRowText component.
@@ -202,8 +216,8 @@ const ResultRowText = ({
     fontFamily: 'Textile',
     color: 'white',
     fontWeight: isHeader ? 'bold' : 'initial',
-    margin: '0px 15px 0px 5px',
-    minWidth: '50px',
+    margin: '10px',
+    textAlign: 'center',
   });
 
 /**
@@ -217,31 +231,48 @@ const ResultItem = ({
   episode,
 }: {
   episode: Episode;
-}) => fabricate('Fader')
-  .setChildren([
-    fabricate('Column')
-      .setStyles({
-        border: 'solid 2px white',
-        borderRadius: '5px',
-        margin: '5px 0px',
-        padding: '5px',
-      })
-      .setChildren([
-        fabricate('Row')
-          .setStyles({ alignItems: 'center', flexWrap: 'wrap' })
-          .setChildren([
-            ResultRowText().setText(`S${episode.season} Ep ${episode.episode}`),
-            ResultRowText().setText(episode.title),
-          ]),
-        fabricate('Row')
-          .setStyles({ flexWrap: 'wrap', alignItems: 'center' })
-          .setChildren([
-            ...episode.characters.map((name) => CharacterChip({ name, isControl: false })),
-            ...episode.writers.map((name) => WriterChip({ name, isControl: false })),
-            ...episode.tags.map((name) => TagChip({ name, isControl: false })),
-          ]),
-      ]),
-  ]);
+}) => {
+  const rowStyles = {
+    justifyContent: fabricate.isNarrow() ? 'center' : 'flex-start',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    padding: '3px 10px',
+  };
+  
+  return fabricate('Fader')
+    .setChildren([
+      fabricate('Column')
+        .setStyles({
+          border: 'solid 2px white',
+          borderRadius: '5px',
+          margin: '5px 0px',
+        })
+        .setChildren([
+          fabricate('Row')
+            .setStyles(rowStyles)
+            .setChildren([
+              ResultRowText().setText(`${episode.title} (S${episode.season} Ep ${episode.episode})`),
+            ]),
+          fabricate('Row')
+            .setStyles({
+              ...rowStyles,
+              backgroundColor: '#111',
+            })
+            .setChildren([
+              ...episode.characters.map((name) => CharacterChip({ name, isControl: false, showText: false })),
+            ]),
+          fabricate('Row')
+            .setStyles({
+              ...rowStyles,
+              backgroundColor: '#111',
+            })
+            .setChildren([
+              ...episode.writers.map((name) => WriterChip({ name, isControl: false })),
+              ...episode.tags.map((name) => TagChip({ name, isControl: false })),
+            ]),
+        ]),
+    ]);
+};
 
 /**
  * Subtitle component.
@@ -282,20 +313,27 @@ export const ChipRow = ({
 }: {
   type: 'characters' | 'writers' | 'tags';
 }) => fabricate('Row')
-    .setStyles({ flexWrap: 'wrap' })
-    .onUpdate((el, { allCharacters, allWriters, allTags }) => {
-      if (type === 'characters') {
-        el.setChildren(allCharacters.map((name: string) => CharacterChip({ name })));
-        return;
-      }
+  .setStyles({
+    flexWrap: 'wrap',
+    padding: '5px',
+    backgroundColor: '#222',
+    borderRadius: '5px',
+    overflowY: fabricate.isNarrow() ? 'scroll' : 'none',
+    maxHeight: fabricate.isNarrow() ? '100px': 'initial',
+  })
+  .onUpdate((el, { allCharacters, allWriters, allTags }) => {
+    if (type === 'characters') {
+      el.setChildren(allCharacters.map(({ name }) => CharacterChip({ name })));
+      return;
+    }
 
-      if (type === 'writers') {
-        el.setChildren(allWriters.map((name: string) => WriterChip({ name })));
-        return;
-      }
-      
-      el.setChildren(allTags.map((name: string) => TagChip({ name })));
-    }, ['allCharacters', 'allWriters', 'allTags']);
+    if (type === 'writers') {
+      el.setChildren(allWriters.map(({ name }) => WriterChip({ name })));
+      return;
+    }
+    
+    el.setChildren(allTags.map(({ name }) => TagChip({ name })));
+  }, ['allCharacters', 'allWriters', 'allTags']);
 
 /**
  * ResultsList component.
@@ -306,3 +344,16 @@ export const ResultsList = () => fabricate('Column')
   .onUpdate((el, { results }) => {
     el.setChildren(results.map((episode: Episode) => ResultItem({ episode })));
   }, ['results']);
+
+/**
+ * Separator component.
+ *
+ * @returns {FabricateComponent} Fabricate component.
+ */
+export const Separator = () => fabricate('div')
+  .setStyles({
+    backgroundColor: Theme.Colors.paddysGreen,
+    height: '3px',
+    width: '60%',
+    margin: '20px auto 0px auto',
+  });

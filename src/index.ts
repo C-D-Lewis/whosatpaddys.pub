@@ -1,8 +1,17 @@
-import { ChipRow, ResultsList, SiteTitle, Subtitle } from './components';
-import { AppState, Episode } from './types';
+import { ChipRow, ResultsList, Separator, SiteTitle, Subtitle } from './components';
+import { AppState, Episode, Countable } from './types';
 import { Fabricate } from '../node_modules/fabricate.js/types/fabricate';
 
 declare const fabricate: Fabricate<AppState>;
+
+/**
+ * Sort countable entities.
+ *
+ * @param {Countable} a - Comparable entitiy.
+ * @param {Countable} b - Comparable entitiy.
+ * @returns {number} Sort value.
+ */
+const sortByCount = (a: Countable, b: Countable) => a.count > b.count ? -1 : 1;
 
 /**
  * Fetch the episode data file.
@@ -12,17 +21,46 @@ declare const fabricate: Fabricate<AppState>;
 const fetchData = async () => {
   const episodes: Episode[] = await fetch('assets/episodes.json').then((r) => r.json());
 
+  const allCharacters: Countable[] = [];
+  const allWriters: Countable[] = [];
+  const allTags: Countable[] = [];
+
   // Gather all characters, writers, tags
-  const allCharacters: string[] = [];
-  const allWriters: string[] = [];
-  const allTags: string[] = [];
   episodes.forEach(({ characters, writers, tags }) => {
-    allCharacters.push(...characters.filter((p) => !allCharacters.includes(p)));
-    allWriters.push(...writers.filter((p) => !allWriters.includes(p)));
-    allTags.push(...tags.filter((p) => !allTags.includes(p)));
+    characters.forEach((c) => {
+      const found = allCharacters.find(({ name }) => c === name);
+      if (!found) {
+        allCharacters.push({ name: c, count: 1 });
+      } else {
+        found.count += 1;
+      }
+    });
+
+    writers.forEach((c) => {
+      const found = allWriters.find(({ name }) => c === name);
+      if (!found) {
+        allWriters.push({ name: c, count: 1 });
+      } else {
+        found.count += 1;
+      }
+    });
+
+    tags.forEach((t) => {
+      const found = allTags.find(({ name }) => t === name);
+      if (!found) {
+        allTags.push({ name: t, count: 1 });
+      } else {
+        found.count += 1;
+      }
+    });
   });
 
-  fabricate.update({ episodes, allCharacters, allWriters, allTags });
+  fabricate.update({
+    episodes,
+    allCharacters: allCharacters.sort(sortByCount),
+    allWriters: allWriters.sort(sortByCount),
+    allTags: allTags.sort(sortByCount),
+  });
 };
 
 /**
@@ -70,12 +108,14 @@ const App = () => fabricate('Column')
   })
   .setChildren([
     SiteTitle(),
+    Separator(),
     Subtitle().setText('With characters:'),
     ChipRow({ type: 'characters' }),
     Subtitle().setText('By writers:'),
     ChipRow({ type: 'writers' }),
     Subtitle().setText('With tags:'),
     ChipRow({ type: 'tags' }),
+    Separator(),
     Subtitle()
       .setStyles({ textAlign: 'center' })
       .onUpdate((el, { results }) => el.setText(`Found ${results.length} results:`))

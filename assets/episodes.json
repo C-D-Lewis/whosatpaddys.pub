@@ -850,7 +850,8 @@
       "Artemis"
     ],
     "tags": [
-      "Scheme"
+      "Scheme",
+      "Musical"
     ],
     "writers": [
       "Day",
@@ -1102,7 +1103,9 @@
       "Mrs Kelly",
       "Luther"
     ],
-    "tags": [],
+    "tags": [
+      "Musical"
+    ],
     "writers": [
       "Day",
       "McElhenney"
@@ -1571,7 +1574,8 @@
       "Ingrid"
     ],
     "tags": [
-      "Scheme"
+      "Scheme",
+      "Musical"
     ],
     "writers": [
       "Howerton",
@@ -1822,7 +1826,8 @@
       "Z"
     ],
     "tags": [
-      "Scheme"
+      "Scheme",
+      "Musical"
     ],
     "writers": [
       "Hornsby"
@@ -2171,7 +2176,7 @@
     ],
     "tags": [],
     "writers": [
-      "McElhennery",
+      "McElhenney",
       "Day"
     ]
   },
@@ -2340,6 +2345,197 @@
     "writers": [
       "Hornsby",
       "Marder"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "1",
+    "title": "The Gang Turns Black",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Z"
+    ],
+    "tags": [
+      "Musical"
+    ],
+    "writers": [
+      "McElhenney",
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "2",
+    "title": "The Gang Goes to a Water Park",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Ledgin"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "3",
+    "title": "Old Lady House: A Situation Comedy",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Uncle Jack",
+      "Mrs Mac",
+      "Mrs Kelly"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Phirman",
+      "Schneider"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "4",
+    "title": "Wolf Cola: A Public Relations Nightmare",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Hornsby",
+      "Schneider"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "5",
+    "title": "Making Dennis Reynolds a Murderer",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Bill"
+    ],
+    "tags": [
+      "Special"
+    ],
+    "writers": [
+      "Galvin"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "6",
+    "title": "Hero or Hate Crime?",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "McElhenney",
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "7",
+    "title": "PTSDee",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Luther",
+      "Cricket"
+    ],
+    "tags": [],
+    "writers": [
+      "McElhenney",
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "8",
+    "title": "The Gang Tends Bar",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket"
+    ],
+    "tags": [],
+    "writers": [
+      "Ganz"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "9",
+    "title": "A Cricket's Tale",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket"
+    ],
+    "tags": [],
+    "writers": [
+      "Hornsby",
+      "Marder"
+    ]
+  },
+  {
+    "season": "12",
+    "episode": "10",
+    "title": "Dennis' Double Life",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [],
+    "writers": [
+      "McElhenney",
+      "Day",
+      "Howerton"
     ]
   }
 ]
