@@ -55,10 +55,11 @@ const fetchData = async () => {
     });
   });
 
+  // Sort results, showing only repeat writers
   fabricate.update({
     episodes,
     allCharacters: allCharacters.sort(sortByCount),
-    allWriters: allWriters.sort(sortByCount),
+    allWriters: allWriters.filter(({ count }) => count > 1).sort(sortByCount),
     allTags: allTags.sort(sortByCount),
   });
 };
@@ -118,9 +119,9 @@ const App = () => fabricate('Column')
     Separator(),
     Subtitle()
       .setStyles({ textAlign: 'center' })
-      .onUpdate((el, { results }) => el.setText(`Found ${results.length} results:`))
-      .when((state: AppState) => state.results && state.results.length > 0),
+      .onUpdate((el, { results }) => el.setText(results.length > 0 ? `Found ${results.length} results:` : 'No results')),
     ResultsList(),
+    // TODO: Footer
   ])
   .onUpdate((el, state) => {
     updateResults(state);

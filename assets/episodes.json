@@ -498,7 +498,8 @@
       "Frank",
       "Waitress",
       "Mrs Mac",
-      "Carmen"
+      "Carmen",
+      "Pepper Jack"
     ],
     "tags": [],
     "writers": [
@@ -2513,7 +2514,9 @@
       "Frank",
       "Cricket"
     ],
-    "tags": [],
+    "tags": [
+      "Special"
+    ],
     "writers": [
       "Hornsby",
       "Marder"
@@ -2536,6 +2539,527 @@
       "McElhenney",
       "Day",
       "Howerton"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "1",
+    "title": "The Gang Makes Paddy's Great Again",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "2",
+    "title": "The Gang Escapes",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Ganz"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "3",
+    "title": "The Gang Beats Boggs: Ladies Reboot",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Artemis",
+      "Gail",
+      "Mrs Mac",
+      "Mrs Kelly",
+      "Waiter"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Phirman",
+      "Schneider"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "4",
+    "title": "Time's Up for the Gang",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Ganz"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "5",
+    "title": "The Gang Gets New Wheels",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Galvin"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "6",
+    "title": "The Gang Solves the Bathroom Problem",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Ryan"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "7",
+    "title": "The Gang Does a Clip Show",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "Phirman",
+      "Schneider"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "8",
+    "title": "Charlie's Home Alone",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Bill",
+      "Uncle Jack",
+      "Cricket",
+      "Ben",
+      "Rex"
+    ],
+    "tags": [],
+    "writers": [
+      "Weinstock",
+      "Jones"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "9",
+    "title": "The Gang Wins the Big Game",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Bill",
+      "Uncle Jack",
+      "Cricket",
+      "Rex",
+      "Waiter"
+    ],
+    "tags": [],
+    "writers": [
+      "Galvin"
+    ]
+  },
+  {
+    "season": "13",
+    "episode": "10",
+    "title": "Mac Finds His Pride",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Luther",
+      "Cricket"
+    ],
+    "tags": [],
+    "writers": [
+      "McElhenney",
+      "Day"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "1",
+    "title": "The Gang Gets Romantic",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "McElhenney",
+      "Day"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "2",
+    "title": "Thunder Gun 4: Maximum Cool",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Galvin"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "3",
+    "title": "Dee Day",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Ganz"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "4",
+    "title": "The Gang Chokes",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waiter"
+    ],
+    "tags": [],
+    "writers": [
+      "Howerton"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "5",
+    "title": "The Gang Texts",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "McElhenney",
+      "Day"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "6",
+    "title": "The Janitor Always Mops Twice",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Cricket"
+    ],
+    "tags": [
+      "Special"
+    ],
+    "writers": [
+      "Ganz"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "7",
+    "title": "The Gang Solves Global Warming",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "McElhenney",
+      "Day"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "8",
+    "title": "Paddy's Has a Jumper",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Cricket",
+      "Jackie"
+    ],
+    "tags": [],
+    "writers": [
+      "Phirman",
+      "Schneider"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "9",
+    "title": "A Woman's Right to Chop",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Z"
+    ],
+    "tags": [],
+    "writers": [
+      "Phirman",
+      "Schneider"
+    ]
+  },
+  {
+    "season": "14",
+    "episode": "10",
+    "title": "Waiting for Big Mo",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "1",
+    "title": "2020: A Year In Review",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Scam"
+    ],
+    "writers": [
+      "McElhenney",
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "2",
+    "title": "The Gang Makes Lethal Weapon 7",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Artemis",
+      "Pepper Jack"
+    ],
+    "tags": [
+      "Scheme"
+    ],
+    "writers": [
+      "Taylor",
+      "K. McElhenney"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "3",
+    "title": "The Gang Buys a Roller Rink",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [
+      "Flashback"
+    ],
+    "writers": [
+      "Rosell",
+      "Hornsby"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "4",
+    "title": "The Gang Replaces Dee With a Monkey",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "Howerton",
+      "Pedrad"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "5",
+    "title": "The Gang Goes to Ireland",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress",
+      "Mrs Mac"
+    ],
+    "tags": [],
+    "writers": [
+      "McElhenney",
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "6",
+    "title": "The Gang's Still in Ireland",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank"
+    ],
+    "tags": [],
+    "writers": [
+      "McElhenney",
+      "Day",
+      "Howerton"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "7",
+    "title": "Dee Sinks in a Bog",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [],
+    "writers": [
+      "Hornsby",
+      "Rosell"
+    ]
+  },
+  {
+    "season": "15",
+    "episode": "8",
+    "title": "The Gang Carries a Corpse Up a Mountain",
+    "characters": [
+      "Dennis",
+      "Mac",
+      "Charlie",
+      "Dee",
+      "Frank",
+      "Waitress"
+    ],
+    "tags": [],
+    "writers": [
+      "Ganz"
     ]
   }
 ]

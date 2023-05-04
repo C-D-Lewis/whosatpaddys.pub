@@ -201,71 +201,70 @@ const TagChip = ({
   });
 
 /**
- * ResultRowText component.
+ * ResultText component.
  *
- * @param {object} props - Component props.
- * @param {boolean} [props.isHeader] - If this text is in the table header.
  * @returns {FabricateComponent} Fabricate component.
  */
-const ResultRowText = ({
-  isHeader = false,
-}: {
-  isHeader?: boolean;
-} = {}) => fabricate('Text')
+const ResultText = () => fabricate('Text')
   .setStyles({
     fontFamily: 'Textile',
     color: 'white',
-    fontWeight: isHeader ? 'bold' : 'initial',
     margin: '10px',
+    fontSize: fabricate.isNarrow() ? '1.2rem' : '1.4rem',
     textAlign: 'center',
   });
 
 /**
- * ResultItem component.
+ * ResultCard component.
  *
  * @param {object} props - Component props.
  * @param {Episode} props.episode - Episode data.
  * @returns {FabricateComponent} Fabricate component.
  */
-const ResultItem = ({
+const ResultCard = ({
   episode,
 }: {
   episode: Episode;
 }) => {
   const rowStyles = {
-    justifyContent: fabricate.isNarrow() ? 'center' : 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
     padding: '3px 10px',
   };
   
   return fabricate('Fader')
+    .setStyles({
+      width: fabricate.isNarrow() ? '95%' : '45%',
+      margin: '5px auto 25px auto',
+      minHeight: '200px',
+    })
     .setChildren([
       fabricate('Column')
         .setStyles({
           border: 'solid 2px white',
           borderRadius: '5px',
-          margin: '5px 0px',
+          height: '100%',
+          backgroundColor: 'black',
         })
         .setChildren([
           fabricate('Row')
-            .setStyles(rowStyles)
+            .setStyles({ ...rowStyles, flex: 1 })
             .setChildren([
-              ResultRowText().setText(`${episode.title} (S${episode.season} Ep ${episode.episode})`),
+              ResultText().setText(episode.title),
             ]),
           fabricate('Row')
-            .setStyles({
-              ...rowStyles,
-              backgroundColor: '#111',
-            })
+            .setStyles(rowStyles)
+            .setChildren([
+              ResultText().setText(`(S${episode.season} Ep ${episode.episode})`),
+            ]),
+          fabricate('Row')
+            .setStyles({ ...rowStyles, backgroundColor: '#111' })
             .setChildren([
               ...episode.characters.map((name) => CharacterChip({ name, isControl: false, showText: false })),
             ]),
           fabricate('Row')
-            .setStyles({
-              ...rowStyles,
-              backgroundColor: '#111',
-            })
+            .setStyles({ ...rowStyles, backgroundColor: '#111' })
             .setChildren([
               ...episode.writers.map((name) => WriterChip({ name, isControl: false })),
               ...episode.tags.map((name) => TagChip({ name, isControl: false })),
@@ -340,9 +339,10 @@ export const ChipRow = ({
  *
  * @returns {FabricateComponent} Fabricate component.
  */
-export const ResultsList = () => fabricate('Column')
+export const ResultsList = () => fabricate('Row')
+  .setStyles({ flexWrap: 'wrap' })
   .onUpdate((el, { results }) => {
-    el.setChildren(results.map((episode: Episode) => ResultItem({ episode })));
+    el.setChildren(results.map((episode: Episode) => ResultCard({ episode })));
   }, ['results']);
 
 /**

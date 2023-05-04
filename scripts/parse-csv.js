@@ -32,6 +32,7 @@ const CHARACTERS = [
   'Rex',
   'Jackie',
   'Waiter',
+  'Pepper Jack',
 ];
 
 /**
@@ -76,7 +77,6 @@ const main = async () => {
 
   // Make useful
   const seasons = buildSeasonsData(csv);
-  console.log(seasons);
 
   // Write to disk
   writeFileSync(`${__dirname}/../assets/episodes.json`, JSON.stringify(seasons, null, 2), 'utf-8');
