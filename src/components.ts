@@ -238,7 +238,7 @@ const ResultCard = ({
       width: fabricate.isNarrow() ? '95%' : '45%',
       margin: '5px auto 25px auto',
       minHeight: '200px',
-      maxHeight: '250px',
+      maxHeight: '300px',
     })
     .setChildren([
       fabricate('Column')

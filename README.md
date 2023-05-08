@@ -2,25 +2,27 @@
 
 ![](assets/screenshot.png)
 
-Website built with [fabricate.js]() and TypeScript to allow filtering of
-episodes of It's Always Sunny in Philadelphia based on featured characters,
-writers, and tags.
+Website built with [fabricate.js](https://github.com/c-d-lewis/fabricate.js) and
+TypeScript to allow filtering of episodes of It's Always Sunny in Philadelphia
+based on featured characters, writers, and tags.
 
 Deploys automatically with GitHub Actions on commit to `master`.
 
-## Setup
+## Run locally
+
+Install dependencies:
 
 ```
 npm ci
 ```
 
-## Build
+Build the site:
 
 ```
 npm run build
 ```
 
-## Run locally
+Run a dev server:
 
 ```
 npm start
