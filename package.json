@@ -4,10 +4,8 @@
   "description": "Scripts and data for episodes of IASIP",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build:episodes": "node scripts/parse-csv.js",
-    "setup": "npm run clean && npm run build:episodes",
-    "build:dev": "npm run setup && webpack --mode development",
-    "build": "npm run setup && webpack --mode production",
+    "build:dev": "npm run clean && webpack --mode development",
+    "build": "npm run clean && webpack --mode production",
     "start": "npm run build:dev && http-server"
   },
   "author": "Chris Lewis",

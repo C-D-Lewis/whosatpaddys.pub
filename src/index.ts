@@ -1,6 +1,8 @@
-import { ChipRow, ResultsList, Separator, SiteTitle, Subtitle } from './components';
-import { AppState, Episode, Countable } from './types';
+import { ChipRow, Footer, ResultsList, Separator, SiteTitle, Subtitle } from './components';
+import { AppState, Episode, Countable, Searchable } from './types';
 import { Fabricate } from '../node_modules/fabricate.js/types/fabricate';
+import { EPISODES } from './episodes';
+import { Theme } from './theme';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -19,14 +21,12 @@ const sortByCount = (a: Countable, b: Countable) => a.count > b.count ? -1 : 1;
  * @returns {Promise<void>}
  */
 const fetchData = async () => {
-  const episodes: Episode[] = await fetch('assets/episodes.json').then((r) => r.json());
-
   const allCharacters: Countable[] = [];
   const allWriters: Countable[] = [];
   const allTags: Countable[] = [];
 
   // Gather all characters, writers, tags
-  episodes.forEach(({ characters, writers, tags }) => {
+  EPISODES.forEach(({ characters, writers, tags }) => {
     characters.forEach((c) => {
       const found = allCharacters.find(({ name }) => c === name);
       if (!found) {
@@ -57,12 +57,23 @@ const fetchData = async () => {
 
   // Sort results, showing only repeat writers
   fabricate.update({
-    episodes,
+    episodes: EPISODES,
     allCharacters: allCharacters.sort(sortByCount),
     allWriters: allWriters.filter(({ count }) => count > 1).sort(sortByCount),
     allTags: allTags.sort(sortByCount),
   });
 };
+
+/**
+   * Generic matcher for selected lists against lists in Episode.
+   *
+   * @param {Episode} e - Episode to match.
+   * @param {string} epKey - Key in episode that contains list to compare against.
+   * @param {Searchable[]} stateList - List of selections from the state.
+   * @returns {boolean} true if this Episode should match.
+   */
+const matchIfAny = (e: Episode, epKey: keyof Episode, stateList: Searchable[]) =>
+  !stateList.length || stateList.every(p => (e[epKey] as Searchable).includes(p));
 
 /**
  * Update results because selections changed.
@@ -78,20 +89,9 @@ const updateResults = (state: AppState) => {
     return;
   }
 
-  /**
-   * Generic matcher for selected lists against lists in Episode.
-   *
-   * @param {Episode} e - Episode to match.
-   * @param {string} epKey - Key in episode that contains list to compare against.
-   * @param {string[]} stateList - List of selections from the state.
-   * @returns {boolean} true if this Episode should match.
-   */
-  const genericMatch = (e: Episode, epKey: string, stateList: string[]) =>
-    !stateList.length || stateList.every(p => e[epKey as keyof Episode].includes(p));
-
-  const matchesCharacters = (e: Episode) => genericMatch(e, 'characters', selectedCharacters);
-  const matchesWriters = (e: Episode) => genericMatch(e, 'writers', selectedWriters);
-  const matchesTags = (e: Episode) => genericMatch(e, 'tags', selectedTags);
+  const matchesCharacters = (e: Episode) => matchIfAny(e, 'characters', selectedCharacters);
+  const matchesWriters = (e: Episode) => matchIfAny(e, 'writers', selectedWriters);
+  const matchesTags = (e: Episode) => matchIfAny(e, 'tags', selectedTags);
 
   const results = episodes.filter((e) => matchesCharacters(e) && matchesWriters(e) && matchesTags(e));
   fabricate.update({ results });
@@ -105,10 +105,19 @@ const updateResults = (state: AppState) => {
 const App = () => fabricate('Column')
   .setStyles({
     maxWidth: '1000px',
-    margin: fabricate.isNarrow() ? '10px' : '10px auto',
+    margin: fabricate.isNarrow() ? '0px' : '0px auto',
   })
   .setChildren([
     SiteTitle(),
+    Separator({ backgroundColor: Theme.Colors.sunnyYellow })
+      .setStyles({
+        margin: 0,
+        height: '8px',
+        width: '100%',
+      }),
+    Subtitle()
+      .setStyles({ textAlign: 'center' })
+      .setText('Find an episode where characters meet, by a given writer, or with specific themes.'),
     Separator(),
     Subtitle().setText('With characters:'),
     ChipRow({ type: 'characters' }),
@@ -121,7 +130,7 @@ const App = () => fabricate('Column')
       .setStyles({ textAlign: 'center' })
       .onUpdate((el, { results }) => el.setText(results.length > 0 ? `Found ${results.length} results:` : 'No results')),
     ResultsList(),
-    // TODO: Footer
+    Footer(),
   ])
   .onUpdate((el, state) => {
     updateResults(state);

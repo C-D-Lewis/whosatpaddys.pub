@@ -1,5 +1,5 @@
 import { Theme } from './theme';
-import { AppState, Episode } from './types';
+import { AppState, Character, Episode, Tag, Writer } from './types';
 import { Fabricate } from '../node_modules/fabricate.js/types/fabricate';
 
 declare const fabricate: Fabricate<AppState>;
@@ -49,7 +49,7 @@ const CountableChip = ({
       alignItems: 'center',
     })
     .onHover((el, state, isHovered) => {
-      if (!isControl) return;
+      if (!isControl || fabricate.isNarrow()) return;
 
       el.setStyles({ filter: `brightness(${isHovered ? 0.7 : 1})` });
     })
@@ -60,6 +60,7 @@ const CountableChip = ({
           .setStyles({
             fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem',
             padding: '0px 2px',
+            cursor: 'default',
           })
           .setText(count ? `${name} (${count})` : name)
         : fabricate('div'),
@@ -82,7 +83,7 @@ export const CharacterChip = ({
   isControl = true,
   showText = false,
 }: {
-  name: string;
+  name: Character;
   count?: number;
   isControl?: boolean;
   showText?: boolean;
@@ -128,7 +129,7 @@ const WriterChip = ({
   count,
   isControl = true,
 }: {
-  name: string;
+  name: Writer;
   count?: number;
   isControl?: boolean;
 }) => CountableChip({
@@ -171,7 +172,7 @@ const TagChip = ({
   count,
   isControl = true,
 }: {
-  name: string;
+  name: Tag;
   count?: number;
   isControl?: boolean;
 }) => CountableChip({
@@ -238,6 +239,7 @@ const ResultCard = ({
       width: fabricate.isNarrow() ? '95%' : '45%',
       margin: '5px auto 25px auto',
       minHeight: '200px',
+      maxHeight: '250px',
     })
     .setChildren([
       fabricate('Column')
@@ -295,8 +297,16 @@ export const SiteTitle = () => fabricate('Text')
   .setStyles({
     color: 'white',
     fontSize: fabricate.isNarrow() ? '2rem' : '3rem',
-    margin: 'auto',
+    margin: '0px auto',
+    padding: '70px 0px 5px 0px',
     fontFamily: 'Textile',
+    backgroundImage: 'url(assets/images/bar.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    // maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+    width: '100%',
+    textAlign: 'center',
+    cursor: 'default',
   })
   .setText('Who\'s at Paddy\'s?');
 
@@ -314,24 +324,24 @@ export const ChipRow = ({
 }) => fabricate('Row')
   .setStyles({
     flexWrap: 'wrap',
-    padding: '5px',
-    backgroundColor: '#222',
+    padding: '10px',
+    backgroundColor: '#222A',
     borderRadius: '5px',
     overflowY: fabricate.isNarrow() ? 'scroll' : 'none',
     maxHeight: fabricate.isNarrow() ? '100px': 'initial',
   })
   .onUpdate((el, { allCharacters, allWriters, allTags }) => {
     if (type === 'characters') {
-      el.setChildren(allCharacters.map(({ name }) => CharacterChip({ name })));
+      el.setChildren(allCharacters.map(({ name }) => CharacterChip({ name: name as Character })));
       return;
     }
 
     if (type === 'writers') {
-      el.setChildren(allWriters.map(({ name }) => WriterChip({ name })));
+      el.setChildren(allWriters.map(({ name }) => WriterChip({ name: name as Writer })));
       return;
     }
     
-    el.setChildren(allTags.map(({ name }) => TagChip({ name })));
+    el.setChildren(allTags.map(({ name }) => TagChip({ name: name as Tag })));
   }, ['allCharacters', 'allWriters', 'allTags']);
 
 /**
@@ -340,7 +350,10 @@ export const ChipRow = ({
  * @returns {FabricateComponent} Fabricate component.
  */
 export const ResultsList = () => fabricate('Row')
-  .setStyles({ flexWrap: 'wrap' })
+  .setStyles({
+    flexWrap: 'wrap',
+    minHeight: '60vh',
+  })
   .onUpdate((el, { results }) => {
     el.setChildren(results.map((episode: Episode) => ResultCard({ episode })));
   }, ['results']);
@@ -350,10 +363,38 @@ export const ResultsList = () => fabricate('Row')
  *
  * @returns {FabricateComponent} Fabricate component.
  */
-export const Separator = () => fabricate('div')
+export const Separator = ({ backgroundColor = Theme.Colors.paddysGreen } = {}) => fabricate('div')
   .setStyles({
-    backgroundColor: Theme.Colors.paddysGreen,
+    backgroundColor,
     height: '3px',
-    width: '60%',
+    width: '50%',
     margin: '20px auto 0px auto',
   });
+
+/**
+ * Footer component.
+ *
+ * @returns {FabricateComponent} Fabricate component.
+ */
+export const Footer = () => fabricate('Row')
+  .setStyles({
+    width: '100%',
+    padding: '15px',
+    justifyContent: 'center',
+    backgroundColor: '#111',
+  })
+  .setChildren([
+    fabricate('img')
+      .setAttributes({ src: './assets/images/github.png' })
+      .setStyles({
+        width: '32px',
+        height: '32px',
+        cursor: 'pointer',
+      })
+      .onClick(() => window.open('https://github.com/C-D-Lewis/whosatpaddys.pub', '_blank')),
+    fabricate('FabricateAttribution')
+      .setStyles({
+        marginLeft: '15px',
+        width: '50px',
+      }),
+  ]);

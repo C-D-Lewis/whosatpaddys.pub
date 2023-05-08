@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #111;
+  background-color: #000;
 }
 
 * {
@@ -10,5 +10,5 @@ html, body {
 
 @font-face {
   font-family: 'Textile';
-  src: url('../assets/textile.ttf') format('truetype');
+  src: url('../assets/fonts/textile.ttf') format('truetype');
 }
