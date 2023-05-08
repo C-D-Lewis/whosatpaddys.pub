@@ -60,7 +60,6 @@ const CountableChip = ({
           .setStyles({
             fontSize: fabricate.isNarrow() ? '0.9rem' : '1rem',
             padding: '0px 2px',
-            cursor: 'default',
           })
           .setText(count ? `${name} (${count})` : name)
         : fabricate('div'),
