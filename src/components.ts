@@ -375,25 +375,37 @@ export const Separator = ({ backgroundColor = Theme.Colors.paddysGreen } = {}) =
  *
  * @returns {FabricateComponent} Fabricate component.
  */
-export const Footer = () => fabricate('Row')
+export const Footer = () => fabricate('Column')
   .setStyles({
     width: '100%',
-    padding: '15px',
-    justifyContent: 'center',
+    padding: '15px 0px',
     backgroundColor: '#111',
   })
   .setChildren([
-    fabricate('img')
-      .setAttributes({ src: './assets/images/github.png' })
+    fabricate('Text')
       .setStyles({
-        width: '32px',
-        height: '32px',
-        cursor: 'pointer',
+        color: 'white',
+        textAlign: 'center',
       })
-      .onClick(() => window.open('https://github.com/C-D-Lewis/whosatpaddys.pub', '_blank')),
-    fabricate('FabricateAttribution')
+      .setText('Something missing? Contributions/issues welcome on GitHub!'),
+    fabricate('Row')
       .setStyles({
-        marginLeft: '15px',
-        width: '50px',
-      }),
+        justifyContent: 'center',
+        padding: '5px',
+      })
+      .setChildren([
+        fabricate('img')
+          .setAttributes({ src: './assets/images/github.png' })
+          .setStyles({
+            width: '32px',
+            height: '32px',
+            cursor: 'pointer',
+          })
+          .onClick(() => window.open('https://github.com/C-D-Lewis/whosatpaddys.pub', '_blank')),
+        fabricate('FabricateAttribution')
+          .setStyles({
+            marginLeft: '15px',
+            width: '50px',
+          }),
+      ]),
   ]);
