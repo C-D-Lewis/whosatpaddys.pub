@@ -11,24 +11,32 @@
   "author": "Chris Lewis",
   "license": "Apache-2.0",
   "dependencies": {
-    "@chris-lewis/eslint-config": "^1.0.3",
+    "fabricate.js": "^2.9.0",
     "neat-csv": "^6.0.1"
   },
   "eslintConfig": {
     "extends": [
-      "@chris-lewis/eslint-config"
+      "@chris-lewis/eslint-config",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
     ],
-    "globals": {
-      "fabricate": "readonly",
-      "Theme": "readonly",
-      "Utils": "readonly"
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
     },
-    "ignorePatterns": [
-      "dist"
-    ]
+    "rules": {
+      "import/extensions": 0,
+      "no-param-reassign": 0
+    }
   },
   "devDependencies": {
-    "fabricate.js": "^2.5.0",
+    "@chris-lewis/eslint-config": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
     "http-server": "^14.1.1",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2",

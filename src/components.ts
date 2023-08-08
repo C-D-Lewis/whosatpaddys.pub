@@ -1,6 +1,8 @@
-import { Theme } from './theme';
-import { AppState, Character, Episode, Tag, Writer } from './types';
-import { Fabricate } from '../node_modules/fabricate.js/types/fabricate';
+import { Fabricate, FabricateComponent } from 'fabricate.js/types/fabricate';
+import Theme from './theme';
+import {
+  AppState, Character, Episode, Tag, Writer,
+} from './types';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -87,32 +89,36 @@ export const CharacterChip = ({
   isControl?: boolean;
   showText?: boolean;
 }) => CountableChip({
-    name,
-    count,
-    isControl,
-    showText,
-    imgSize: fabricate.isNarrow() ? '24px' : '32px',
-    imgSrc: `assets/characters/${name}.jpg`,
-  })
-    .onClick((el, { selectedCharacters }) => {
-      if (!isControl) return;
+  name,
+  count,
+  isControl,
+  showText,
+  imgSize: fabricate.isNarrow() ? '24px' : '32px',
+  imgSrc: `assets/characters/${name}.jpg`,
+})
+  .onClick((el, { selectedCharacters }) => {
+    if (!isControl) return;
 
-      const nowSelected = !selectedCharacters.includes(name);
-      el.setStyles({ backgroundColor: nowSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
-
-      fabricate.update({
-        selectedCharacters: nowSelected
-          ? [...selectedCharacters, name]
-          : selectedCharacters.filter((p: string) => p !== name),
-      });
-    })
-    .onCreate((el, { selectedCharacters }) => {
-      // If matching the query, highlight
-      if (isControl) return;
-
-      const isSelected = selectedCharacters.includes(name);
-      el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
+    const nowSelected = !selectedCharacters.includes(name);
+    el.setStyles({
+      backgroundColor: nowSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
     });
+
+    fabricate.update({
+      selectedCharacters: nowSelected
+        ? [...selectedCharacters, name]
+        : selectedCharacters.filter((p: string) => p !== name),
+    });
+  })
+  .onCreate((el, { selectedCharacters }) => {
+    // If matching the query, highlight
+    if (isControl) return;
+
+    const isSelected = selectedCharacters.includes(name);
+    el.setStyles({
+      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
+    });
+  });
 
 /**
  * WriterChip component.
@@ -141,7 +147,9 @@ const WriterChip = ({
     if (!isControl) return;
 
     const isSelected = !selectedWriters.includes(name);
-    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
+    el.setStyles({
+      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
+    });
 
     fabricate.update({
       selectedWriters: isSelected
@@ -154,7 +162,9 @@ const WriterChip = ({
     if (isControl) return;
 
     const isSelected = selectedWriters.includes(name);
-    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
+    el.setStyles({
+      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
+    });
   });
 
 /**
@@ -184,7 +194,9 @@ const TagChip = ({
     if (!isControl) return;
 
     const isSelected = !selectedTags.includes(name);
-    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
+    el.setStyles({
+      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
+    });
 
     fabricate.update({
       selectedTags: isSelected
@@ -197,7 +209,9 @@ const TagChip = ({
     if (isControl) return;
 
     const isSelected = selectedTags.includes(name);
-    el.setStyles({ backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected });
+    el.setStyles({
+      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
+    });
   });
 
 /**
@@ -232,7 +246,7 @@ const ResultCard = ({
     flexWrap: 'wrap',
     padding: '3px 10px',
   };
-  
+
   return fabricate('Fader')
     .setStyles({
       width: fabricate.isNarrow() ? '95%' : '45%',
@@ -250,7 +264,7 @@ const ResultCard = ({
         })
         .setChildren([
           fabricate('Row')
-            .setStyles({ ...rowStyles, flex: 1 })
+            .setStyles({ ...rowStyles, flex: '1' })
             .setChildren([
               ResultText().setText(episode.title),
             ]),
@@ -262,7 +276,9 @@ const ResultCard = ({
           fabricate('Row')
             .setStyles({ ...rowStyles, backgroundColor: '#111' })
             .setChildren([
-              ...episode.characters.map((name) => CharacterChip({ name, isControl: false, showText: false })),
+              ...episode.characters.map(
+                (name) => CharacterChip({ name, isControl: false, showText: false }),
+              ),
             ]),
           fabricate('Row')
             .setStyles({ ...rowStyles, backgroundColor: '#111' })
@@ -317,7 +333,7 @@ export const SiteTitle = () => fabricate('Text')
  * @returns {FabricateComponent} Fabricate component.
  */
 export const ChipRow = ({
-  type
+  type,
 }: {
   type: 'characters' | 'writers' | 'tags';
 }) => fabricate('Row')
@@ -327,7 +343,7 @@ export const ChipRow = ({
     backgroundColor: '#222A',
     borderRadius: '5px',
     overflowY: fabricate.isNarrow() ? 'scroll' : 'none',
-    maxHeight: fabricate.isNarrow() ? '100px': 'initial',
+    maxHeight: fabricate.isNarrow() ? '100px' : 'initial',
   })
   .onUpdate((el, { allCharacters, allWriters, allTags }) => {
     if (type === 'characters') {
@@ -339,7 +355,7 @@ export const ChipRow = ({
       el.setChildren(allWriters.map(({ name }) => WriterChip({ name: name as Writer })));
       return;
     }
-    
+
     el.setChildren(allTags.map(({ name }) => TagChip({ name: name as Tag })));
   }, ['allCharacters', 'allWriters', 'allTags']);
 
@@ -360,9 +376,11 @@ export const ResultsList = () => fabricate('Row')
 /**
  * Separator component.
  *
+ * @param {object} props - Component props.
+ * @param {string} props.backgroundColor - Background color.
  * @returns {FabricateComponent} Fabricate component.
  */
-export const Separator = ({ backgroundColor = Theme.Colors.paddysGreen } = {}) => fabricate('div')
+export const Separator = ({ backgroundColor = Theme.Colors.paddysGreen }: { backgroundColor?: string } = {}) => fabricate('div')
   .setStyles({
     backgroundColor,
     height: '3px',

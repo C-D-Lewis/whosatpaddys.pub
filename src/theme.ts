@@ -1,3 +1,4 @@
+/** App colors */
 const Colors = {
   sunnyYellow: '#ffad2a',
   unselected: '#888',
@@ -5,6 +6,8 @@ const Colors = {
 };
 
 /** App theme */
-export const Theme = {
+const Theme = {
   Colors,
 };
+
+export default Theme;

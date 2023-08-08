@@ -31,7 +31,7 @@ export type Searchable = Character | Writer | Tag;
 /** Named sum entity */
 export type Countable = {
   name: Searchable;
-  count: number; 
+  count: number;
 }
 
 /** State of the fabricate.js app */

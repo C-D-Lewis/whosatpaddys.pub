@@ -1,8 +1,12 @@
-import { ChipRow, Footer, ResultsList, Separator, SiteTitle, Subtitle } from './components';
-import { AppState, Episode, Countable, Searchable } from './types';
-import { Fabricate } from '../node_modules/fabricate.js/types/fabricate';
-import { EPISODES } from './episodes';
-import { Theme } from './theme';
+import { Fabricate, FabricateComponent } from 'fabricate.js/types/fabricate';
+import {
+  ChipRow, Footer, ResultsList, Separator, SiteTitle, Subtitle,
+} from './components';
+import {
+  AppState, Episode, Countable, Searchable,
+} from './types';
+import EPISODES from './episodes';
+import Theme from './theme';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -13,7 +17,7 @@ declare const fabricate: Fabricate<AppState>;
  * @param {Countable} b - Comparable entitiy.
  * @returns {number} Sort value.
  */
-const sortByCount = (a: Countable, b: Countable) => a.count > b.count ? -1 : 1;
+const sortByCount = (a: Countable, b: Countable) => (a.count > b.count ? -1 : 1);
 
 /**
  * Fetch the episode data file.
@@ -65,15 +69,18 @@ const fetchData = async () => {
 };
 
 /**
-   * Generic matcher for selected lists against lists in Episode.
-   *
-   * @param {Episode} e - Episode to match.
-   * @param {string} epKey - Key in episode that contains list to compare against.
-   * @param {Searchable[]} stateList - List of selections from the state.
-   * @returns {boolean} true if this Episode should match.
-   */
-const matchIfAny = (e: Episode, epKey: keyof Episode, stateList: Searchable[]) =>
-  !stateList.length || stateList.every(p => (e[epKey] as Searchable).includes(p));
+ * Generic matcher for selected lists against lists in Episode.
+ *
+ * @param {Episode} e - Episode to match.
+ * @param {string} epKey - Key in episode that contains list to compare against.
+ * @param {Searchable[]} stateList - List of selections from the state.
+ * @returns {boolean} true if this Episode should match.
+ */
+const matchIfAny = (
+  e: Episode,
+  epKey: keyof Episode,
+  stateList: Searchable[],
+) => !stateList.length || stateList.every((p) => (e[epKey] as Searchable).includes(p));
 
 /**
  * Update results because selections changed.
@@ -81,7 +88,9 @@ const matchIfAny = (e: Episode, epKey: keyof Episode, stateList: Searchable[]) =
  * @param {AppState} state - App state.
  */
 const updateResults = (state: AppState) => {
-  const { episodes, selectedCharacters, selectedWriters, selectedTags } = state;
+  const {
+    episodes, selectedCharacters, selectedWriters, selectedTags,
+  } = state;
 
   // Nothing chosen yet
   if (!selectedCharacters.length && !selectedWriters.length && !selectedTags.length) {
@@ -89,11 +98,33 @@ const updateResults = (state: AppState) => {
     return;
   }
 
+  /**
+   * Match characters.
+   *
+   * @param {Episode} e - Episode to match.
+   * @returns {boolean} true if match.
+   */
   const matchesCharacters = (e: Episode) => matchIfAny(e, 'characters', selectedCharacters);
+
+  /**
+   * Match writers.
+   *
+   * @param {Episode} e - Episode to match.
+   * @returns {boolean} true if match.
+   */
   const matchesWriters = (e: Episode) => matchIfAny(e, 'writers', selectedWriters);
+
+  /**
+   * Match tags.
+   *
+   * @param {Episode} e - Episode to match.
+   * @returns {boolean} true if match.
+   */
   const matchesTags = (e: Episode) => matchIfAny(e, 'tags', selectedTags);
 
-  const results = episodes.filter((e) => matchesCharacters(e) && matchesWriters(e) && matchesTags(e));
+  const results = episodes.filter(
+    (e) => matchesCharacters(e) && matchesWriters(e) && matchesTags(e),
+  );
   fabricate.update({ results });
 };
 
@@ -111,7 +142,7 @@ const App = () => fabricate('Column')
     SiteTitle(),
     Separator({ backgroundColor: Theme.Colors.sunnyYellow })
       .setStyles({
-        margin: 0,
+        margin: '0',
         height: '8px',
         width: '100%',
       }),
