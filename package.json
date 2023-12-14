@@ -11,7 +11,7 @@
   "author": "Chris Lewis",
   "license": "Apache-2.0",
   "dependencies": {
-    "fabricate.js": "^2.9.0",
+    "fabricate.js": "^3.0.0",
     "neat-csv": "^6.0.1"
   },
   "eslintConfig": {

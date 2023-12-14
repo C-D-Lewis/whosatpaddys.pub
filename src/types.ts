@@ -23,7 +23,7 @@ export type Episode = {
   characters: Character[];
   writers: Writer[];
   tags: Tag[];
-}
+};
 
 /** Entity types that can be searched */
 export type Searchable = Character | Writer | Tag;
@@ -32,7 +32,7 @@ export type Searchable = Character | Writer | Tag;
 export type Countable = {
   name: Searchable;
   count: number;
-}
+};
 
 /** State of the fabricate.js app */
 export type AppState = {
@@ -46,4 +46,4 @@ export type AppState = {
   selectedCharacters: Character[];
   selectedWriters: Writer[];
   selectedTags: Tag[];
-}
+};

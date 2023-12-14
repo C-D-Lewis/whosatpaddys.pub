@@ -140,7 +140,7 @@ const App = () => fabricate('Column')
   })
   .setChildren([
     SiteTitle(),
-    Separator({ backgroundColor: Theme.Colors.sunnyYellow })
+    Separator({ backgroundColor: Theme.palette.sunnyYellow })
       .setStyles({
         margin: '0',
         height: '8px',
@@ -159,7 +159,10 @@ const App = () => fabricate('Column')
     Separator(),
     Subtitle()
       .setStyles({ textAlign: 'center' })
-      .onUpdate((el, { results }) => el.setText(results.length > 0 ? `Found ${results.length} results:` : 'No results')),
+      .onUpdate(
+        (el, { results }) => el.setText(results.length > 0 ? `Found ${results.length} results:` : 'No results'),
+        ['results'],
+      ),
     ResultsList(),
     Footer(),
   ])
@@ -178,6 +181,6 @@ const initialState: AppState = {
   selectedTags: [],
 };
 
-fabricate.app(App(), initialState);
+fabricate.app(App, initialState, { theme: Theme });
 
 fetchData();

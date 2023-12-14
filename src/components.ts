@@ -1,8 +1,9 @@
 import { Fabricate, FabricateComponent } from 'fabricate.js/types/fabricate';
-import Theme from './theme';
+// import Theme from './theme';
 import {
   AppState, Character, Episode, Tag, Writer,
 } from './types';
+import Theme from './theme';
 
 declare const fabricate: Fabricate<AppState>;
 
@@ -41,15 +42,15 @@ const CountableChip = ({
     });
 
   return fabricate('Row')
-    .setStyles({
-      backgroundColor: Theme.Colors.unselected,
+    .setStyles(({ palette }) => ({
+      backgroundColor: palette.unselected,
       borderRadius: '50px',
       padding: '2px 3px',
       cursor: isControl ? 'pointer' : 'initial',
       margin: '2px',
       transition: '0.3s',
       alignItems: 'center',
-    })
+    }))
     .onHover((el, state, isHovered) => {
       if (!isControl || fabricate.isNarrow()) return;
 
@@ -100,9 +101,9 @@ export const CharacterChip = ({
     if (!isControl) return;
 
     const nowSelected = !selectedCharacters.includes(name);
-    el.setStyles({
-      backgroundColor: nowSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
+    el.setStyles(({ palette }) => ({
+      backgroundColor: nowSelected ? palette.sunnyYellow : palette.Colors.unselected,
+    }));
 
     fabricate.update({
       selectedCharacters: nowSelected
@@ -110,15 +111,15 @@ export const CharacterChip = ({
         : selectedCharacters.filter((p: string) => p !== name),
     });
   })
-  .onCreate((el, { selectedCharacters }) => {
+  .onUpdate((el, { selectedCharacters }) => {
     // If matching the query, highlight
     if (isControl) return;
 
     const isSelected = selectedCharacters.includes(name);
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
-  });
+    el.setStyles(({ palette }) => ({
+      backgroundColor: isSelected ? palette.sunnyYellow : palette.unselected,
+    }));
+  }, ['fabricate:created']);
 
 /**
  * WriterChip component.
@@ -147,9 +148,9 @@ const WriterChip = ({
     if (!isControl) return;
 
     const isSelected = !selectedWriters.includes(name);
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
+    el.setStyles(({ palette }) => ({
+      backgroundColor: isSelected ? palette.sunnyYellow : palette.unselected,
+    }));
 
     fabricate.update({
       selectedWriters: isSelected
@@ -157,15 +158,15 @@ const WriterChip = ({
         : selectedWriters.filter((p: string) => p !== name),
     });
   })
-  .onCreate((el, { selectedWriters }) => {
+  .onUpdate((el, { selectedWriters }) => {
     // If matching the query, highlight
     if (isControl) return;
 
     const isSelected = selectedWriters.includes(name);
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
-  });
+    el.setStyles(({ palette }) => ({
+      backgroundColor: isSelected ? palette.sunnyYellow : palette.unselected,
+    }));
+  }, ['fabricate:created']);
 
 /**
  * TagChip component.
@@ -194,9 +195,9 @@ const TagChip = ({
     if (!isControl) return;
 
     const isSelected = !selectedTags.includes(name);
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
+    el.setStyles(({ palette }) => ({
+      backgroundColor: isSelected ? palette.sunnyYellow : palette.unselected,
+    }));
 
     fabricate.update({
       selectedTags: isSelected
@@ -204,15 +205,15 @@ const TagChip = ({
         : selectedTags.filter((p: string) => p !== name),
     });
   })
-  .onCreate((el, { selectedTags }) => {
+  .onUpdate((el, { selectedTags }) => {
     // If matching the query, highlight
     if (isControl) return;
 
     const isSelected = selectedTags.includes(name);
-    el.setStyles({
-      backgroundColor: isSelected ? Theme.Colors.sunnyYellow : Theme.Colors.unselected,
-    });
-  });
+    el.setStyles(({ palette }) => ({
+      backgroundColor: isSelected ? palette.sunnyYellow : palette.unselected,
+    }));
+  }, ['fabricate:created']);
 
 /**
  * ResultText component.
@@ -380,7 +381,7 @@ export const ResultsList = () => fabricate('Row')
  * @param {string} props.backgroundColor - Background color.
  * @returns {FabricateComponent} Fabricate component.
  */
-export const Separator = ({ backgroundColor = Theme.Colors.paddysGreen }: { backgroundColor?: string } = {}) => fabricate('div')
+export const Separator = ({ backgroundColor = Theme.palette.paddysGreen }: { backgroundColor?: string } = {}) => fabricate('div')
   .setStyles({
     backgroundColor,
     height: '3px',
@@ -401,16 +402,10 @@ export const Footer = () => fabricate('Column')
   })
   .setChildren([
     fabricate('Text')
-      .setStyles({
-        color: 'white',
-        textAlign: 'center',
-      })
+      .setStyles({ color: 'white', textAlign: 'center' })
       .setText('Something missing? Contributions/issues welcome on GitHub!'),
     fabricate('Row')
-      .setStyles({
-        justifyContent: 'center',
-        padding: '5px',
-      })
+      .setStyles({ justifyContent: 'center', padding: '5px' })
       .setChildren([
         fabricate('img')
           .setAttributes({ src: './assets/images/github.png' })
@@ -421,9 +416,6 @@ export const Footer = () => fabricate('Column')
           })
           .onClick(() => window.open('https://github.com/C-D-Lewis/whosatpaddys.pub', '_blank')),
         fabricate('FabricateAttribution')
-          .setStyles({
-            marginLeft: '15px',
-            width: '50px',
-          }),
+          .setStyles({ marginLeft: '15px', width: '50px' }),
       ]),
   ]);
