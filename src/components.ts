@@ -102,7 +102,7 @@ export const CharacterChip = ({
 
     const nowSelected = !selectedCharacters.includes(name);
     el.setStyles(({ palette }) => ({
-      backgroundColor: nowSelected ? palette.sunnyYellow : palette.Colors.unselected,
+      backgroundColor: nowSelected ? palette.sunnyYellow : palette.unselected,
     }));
 
     fabricate.update({
