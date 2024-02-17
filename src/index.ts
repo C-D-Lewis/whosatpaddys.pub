@@ -152,7 +152,7 @@ const App = () => fabricate('Column')
     Separator(),
     Subtitle().setText('With characters:'),
     ChipRow({ type: 'characters' }),
-    Subtitle().setText('By writers:'),
+    Subtitle().setText('By returning writers:'),
     ChipRow({ type: 'writers' }),
     Subtitle().setText('With tags:'),
     ChipRow({ type: 'tags' }),

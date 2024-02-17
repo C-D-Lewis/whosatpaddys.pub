@@ -13,7 +13,8 @@ export type Writer = 'Day' | 'Howerton' | 'McElhenney' | 'Hornsby' | 'Marder' |
   'Rosell' | 'Rakhe' | 'Sielaff' | 'Mann' | 'Chernin' | 'Romano' | 'Falconer' |
   'Young' | 'Aron' | 'Lee' | 'Walsh' | 'Stein' | 'Sethi' | 'Weiss' | 'Benioff' |
   'Ledgin' | 'Covington' | 'Galvin' | 'Silberman' | 'Phirman' | 'Schneider' |
-  'Ganz' | 'Ryan' | 'Weinstock' | 'Jones' | 'Taylor' | 'Pedrad' | 'K. McElhenney';
+  'Ganz' | 'Ryan' | 'Weinstock' | 'Jones' | 'Taylor' | 'Pedrad' | 'K. McElhenney' |
+  'Kop' | 'Maloney';
 
 /** Episode */
 export type Episode = {
