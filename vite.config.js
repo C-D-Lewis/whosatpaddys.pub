@@ -1,7 +1,7 @@
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default {
-  base: '',
+  base: 'dist',
   plugins: [
     viteStaticCopy({
       targets: [
