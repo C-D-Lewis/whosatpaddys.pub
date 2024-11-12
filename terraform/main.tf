@@ -30,3 +30,4 @@ module "main" {
   certificate_arn      = "arn:aws:acm:us-east-1:617929423658:certificate/72e3a39b-e701-4269-b429-af2a6a312db9"
   default_root_object  = "dist/index.html"
 }
+
