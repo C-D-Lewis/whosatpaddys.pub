@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build:dev": "npm run clean && vite",
     "build": "npm run clean && vite build",
-    "start": "npm run build:dev && http-server"
+    "start": "npm run build && http-server"
   },
   "author": "Chris Lewis",
   "license": "Apache-2.0",
