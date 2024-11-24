@@ -1,12 +1,12 @@
-import { Fabricate, FabricateComponent } from 'fabricate.js/types/fabricate';
+import { Fabricate, FabricateComponent } from 'fabricate.js';
 import {
   ChipRow, Footer, ResultsList, Separator, SiteTitle, Subtitle,
-} from './components';
+} from './components.ts';
 import {
   AppState, Episode, Countable, Searchable,
-} from './types';
-import EPISODES from './episodes';
-import Theme from './theme';
+} from './types.ts';
+import EPISODES from './episodes.ts';
+import Theme from './theme.ts';
 
 declare const fabricate: Fabricate<AppState>;
 

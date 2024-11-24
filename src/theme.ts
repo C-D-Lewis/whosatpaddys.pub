@@ -1,5 +1,3 @@
-import { FabricateOptions } from "fabricate.js";
-
 /** App theme */
 const Theme = {
   palette: {

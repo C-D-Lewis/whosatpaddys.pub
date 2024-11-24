@@ -1,9 +1,8 @@
-import { Fabricate, FabricateComponent } from 'fabricate.js/types/fabricate';
-// import Theme from './theme';
+import { Fabricate, FabricateComponent } from 'fabricate.js';
 import {
   AppState, Character, Episode, Tag, Writer,
-} from './types';
-import Theme from './theme';
+} from './types.ts';
+import Theme from './theme.ts';
 
 declare const fabricate: Fabricate<AppState>;
 

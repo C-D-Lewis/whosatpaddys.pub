@@ -1,4 +1,4 @@
-import { Episode } from './types';
+import { Episode } from './types.ts';
 
 /** All episode data */
 const EPISODES: Episode[] = [
