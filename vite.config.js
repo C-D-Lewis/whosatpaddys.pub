@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 export default {
   // For terraform-modules/s3-cloudfront-website serving of dist/index.html
-  base: isDev ? '' : 'dist',
+  base: isDev ? '/' : '/dist',
   plugins: [
     viteStaticCopy({
       targets: [
