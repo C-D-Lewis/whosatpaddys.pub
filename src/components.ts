@@ -429,6 +429,7 @@ export const SearchBox = () => fabricate('TextInput', {
   color: '#ddd',
   backgroundColor: '#222',
 })
+  .setStyles({ width: '320px' })
   .onChange((el, state, newVal) => {
     fabricate.update({ search: newVal });
   });
