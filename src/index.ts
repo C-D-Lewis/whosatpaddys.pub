@@ -1,6 +1,6 @@
 import { Fabricate, FabricateComponent } from 'fabricate.js';
 import {
-  ChipRow, Footer, ResultsList, Separator, SiteTitle, Subtitle,
+  ChipRow, Footer, ResultsList, SearchBox, Separator, SiteTitle, Subtitle,
 } from './components.ts';
 import {
   AppState, Episode, Countable, Searchable,
@@ -89,14 +89,22 @@ const matchIfAny = (
  */
 const updateResults = (state: AppState) => {
   const {
-    episodes, selectedCharacters, selectedWriters, selectedTags,
+    episodes, selectedCharacters, selectedWriters, selectedTags, search,
   } = state;
 
   // Nothing chosen yet
-  if (!selectedCharacters.length && !selectedWriters.length && !selectedTags.length) {
+  if (!selectedCharacters.length && !selectedWriters.length && !selectedTags.length && !search) {
     fabricate.update({ results: [] });
     return;
   }
+
+  /**
+   * Match title.
+   *
+   * @param {Episode} e - Episode to match.
+   * @returns {boolean} true if match.
+   */
+  const matchesTitle = (e: Episode) => e.title.toLowerCase().includes(search.toLowerCase());
 
   /**
    * Match characters.
@@ -123,7 +131,7 @@ const updateResults = (state: AppState) => {
   const matchesTags = (e: Episode) => matchIfAny(e, 'tags', selectedTags);
 
   const results = episodes.filter(
-    (e) => matchesCharacters(e) && matchesWriters(e) && matchesTags(e),
+    (e) => matchesCharacters(e) && matchesWriters(e) && matchesTags(e) && matchesTitle(e),
   );
   fabricate.update({ results });
 };
@@ -156,6 +164,8 @@ const App = () => fabricate('Column')
     ChipRow({ type: 'writers' }),
     Subtitle().setText('With tags:'),
     ChipRow({ type: 'tags' }),
+    Subtitle().setText('Search episode titles:'),
+    SearchBox(),
     Separator(),
     Subtitle()
       .setStyles({ textAlign: 'center' })
@@ -168,7 +178,7 @@ const App = () => fabricate('Column')
   ])
   .onUpdate((el, state) => {
     updateResults(state);
-  }, ['selectedCharacters', 'selectedWriters', 'selectedTags']);
+  }, ['selectedCharacters', 'selectedWriters', 'selectedTags', 'search']);
 
 const initialState: AppState = {
   episodes: [],
@@ -179,6 +189,7 @@ const initialState: AppState = {
   selectedCharacters: [],
   selectedWriters: [],
   selectedTags: [],
+  search: '',
 };
 
 fabricate.app(App, initialState, { theme: Theme });

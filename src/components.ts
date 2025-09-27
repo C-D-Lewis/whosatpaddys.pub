@@ -418,3 +418,17 @@ export const Footer = () => fabricate('Column')
           .setStyles({ marginLeft: '15px', width: '50px' }),
       ]),
   ]);
+
+/**
+ * TextInput to search episodes by title.
+ *
+ * @returns {FabricateComponent} SearchBox component.
+ */
+export const SearchBox = () => fabricate('TextInput', {
+  placeholder: 'Search',
+  color: '#ddd',
+  backgroundColor: '#222',
+})
+  .onChange((el, state, newVal) => {
+    fabricate.update({ search: newVal });
+  });

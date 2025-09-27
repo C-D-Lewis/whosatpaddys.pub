@@ -47,4 +47,5 @@ export type AppState = {
   selectedCharacters: Character[];
   selectedWriters: Writer[];
   selectedTags: Tag[];
+  search: string;
 };
