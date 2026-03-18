@@ -1,5 +1,5 @@
 provider "aws" {
-  region = var.region
+  region = "us-east-1"
 }
 
 terraform {
@@ -31,3 +31,6 @@ module "main" {
   default_root_object  = "dist/index.html"
 }
 
+output "distribution_id" {
+  value = module.main.distribution_id
+}
